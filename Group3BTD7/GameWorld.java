@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ListIterator;
 /**
  * Write a description of class GameWorld here.
  * 
@@ -9,6 +11,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GameWorld extends World
 {
 
+    int map [][] = {
+                    {6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6},
+                    {6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6},
+                    {6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {1,1,1,2,0,0,0,0,0,3,1,1,1,1,1,1},
+                    {0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0},
+                    {0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0},
+                    {0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0},
+                    {0,0,0,3,1,1,1,1,1,4,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                   };
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -17,5 +33,15 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+    }
+    
+    private void pathMap(){
+        for(int i = 0; i < 16; i++){
+            for(int j = 0; j < 8; j++){
+                if(map[j][i] == 1){
+                    
+                }
+            }
+        }
     }
 }
