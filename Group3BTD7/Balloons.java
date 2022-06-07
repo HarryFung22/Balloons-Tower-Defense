@@ -15,7 +15,9 @@ public abstract class Balloons extends Actor
     public void act()
     {
         if(!removeMe){
-            
+            if(health < 1){
+                removeMe = true;
+            }
         }else{
             getWorld().removeObject(this);
         }
