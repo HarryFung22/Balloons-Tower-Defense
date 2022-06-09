@@ -8,10 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DartMonkey extends Monkeys
 {
-    /**
-     * Act - do whatever the DartMonkey wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public DartMonkey(){
+        type = "dartMonkey";
+        name = "Dart Monkey";
+        
+    }
     public void act()
     {
         // Add your action code here.
