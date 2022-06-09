@@ -15,7 +15,7 @@ public class CamoBalloon extends Balloons
     }
     public void act()
     {
-        if(health < 1){
+        if(health <= 0){
             removeMe = true;
         }
     }
