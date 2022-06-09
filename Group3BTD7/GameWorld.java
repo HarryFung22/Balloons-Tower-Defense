@@ -44,4 +44,19 @@ public class GameWorld extends World
             }
         }
     }
+    
+    /**
+     * This method determines the distance between 2 actors in a world
+     * Code courtesy of Mr.Cohen
+     * 
+     * @param a The first actor that will be used to measure the distance
+     * @param b The second actor that will be used to measure the distance between the two actors
+     */
+    public static float getDistance(Actor a, Actor b){
+        double distance;
+        double xLength = a.getX() - b.getX();
+        double yLength = a.getY() - b.getY();
+        distance = Math.sqrt(Math.pow(xLength, 2) + Math.pow(yLength, 2));
+        return (float)distance;
+    }
 }
