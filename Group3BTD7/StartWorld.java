@@ -14,6 +14,10 @@ public class StartWorld extends World
     public StartWorld()
     {    
         super(800, 600, 1); 
+        background = new GreenfootImage("BTD700 Background.jpg");
+        background.scale(800,600);
+        setBackground(background);
+        
         
     }
 
