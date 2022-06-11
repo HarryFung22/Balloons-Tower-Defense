@@ -1,21 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * This is the start world, where the player can navigate our main menu.
+ * Players can start the world or check the instructions on how to play.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Aiden S
+ * @version June 7, 2022
  */
 public class StartWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    GreenfootImage background;
+    
     public StartWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         
     }
