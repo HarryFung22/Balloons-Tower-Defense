@@ -25,6 +25,25 @@ public class GameWorld extends World
                     {0,0,0,3,1,1,1,1,1,4,0,0,0,0,0,0},
                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                    };
+                   
+    private static int userHP;
+    private static int startingMoney;
+    private static int score;
+    private int wave = 0;
+    private int balloonsLeft = 0;
+    private int timeBetweenWaves;
+    private int moreDifficult;
+    private int spawn;
+    private boolean start;
+    
+    private boolean upgraded = false;
+    private boolean sold = false;
+    private boolean isClicked;
+    private boolean statOpen;
+    
+    private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
+    
+    
     /**
      * Constructor for objects of class GameWorld.
      * 
