@@ -9,15 +9,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StartWorld extends World
 {
-    GreenfootImage background;
+    GreenfootImage background = new GreenfootImage("BTD700 Background.jpg");
+    private UserInfo userInfo;
+    
     
     public StartWorld()
     {    
-        super(800, 600, 1); 
-        background = new GreenfootImage("BTD700 Background.jpg");
+        super(800, 600, 1);
         background.scale(800,600);
         setBackground(background);
-        
+        if(UserInfo.isStorageAvailable()){
+            
+        }
         
     }
 
