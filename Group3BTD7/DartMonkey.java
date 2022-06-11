@@ -8,13 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DartMonkey extends Monkeys
 {
+    MouseInfo mouse = Greenfoot.getMouseInfo();
+    boolean isBought = false;
     public DartMonkey(){
+        cost = 200;
         type = "dartMonkey";
         name = "Dart Monkey";
+        level = 0;
+        upgradeCost = cost * 2;
+        sellCost = cost / 2;
         
-    }
-    public void act()
-    {
-        // Add your action code here.
     }
 }
