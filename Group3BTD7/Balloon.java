@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Balloon extends Balloons
 {
+    int test;
     public Balloon(){
         health = 1;
         speed = 2;
