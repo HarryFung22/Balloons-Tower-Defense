@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=DisplayBar
+comment0.text=\r\n\ DisplayBar\ is\ a\ greenfoot\ actor\ that\ displays\ text.\r\n\ It\ is\ designed\ to\ work\ in\ a\ scenario\ that\ is\ 800x600\ pixels.\r\n\ Displays\ any\ string\ that\ fits,\ or\ send\ game\ info\ straight\ to\ customized\ method.\r\n\ \r\n\ @author\ Jordan\ Cohen\ \r\n\ \r\n
+comment1.params=userName\ highScore
+comment1.target=DisplayBar(java.lang.String,\ int)
+comment2.params=width
+comment2.target=DisplayBar(int)
+comment2.text=\r\n\ Construct\ a\ ScoreBar\ of\ the\ appropriate\ size.\r\n\r\n\ @param\ width\ \ \ \ \ width\ of\ the\ World\ where\ the\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ScoreBar\ will\ be\ placed\r\n
+comment3.params=highScore
+comment3.target=void\ setHighScore(int)
+comment4.params=playerHP\ score
+comment4.target=void\ update(int,\ int)
+comment5.params=output
+comment5.target=void\ update(java.lang.String)
+comment5.text=\r\n\ Takes\ a\ String\ and\ displays\ it\ centered\ to\ the\ screen.\r\n\r\n\ @param\ output\ \ \ \ Text\ for\ displaying.\r\n
+comment6.params=value\ digits
+comment6.target=java.lang.String\ zeroAdder(int,\ int)
+comment6.text=\r\n\ Method\ that\ aids\ in\ the\ appearance\ of\ the\ scoreboard\ by\ generating\r\n\ Strings\ that\ fill\ in\ zeros\ before\ the\ score.\ For\ example\:\r\n\r\n\ 27\ \=\=\=>\ to\ 5\ digits\ \=\=\=>\ 00027\r\n\r\n\ @param\ \ \ value\ \ \ integer\ value\ to\ use\ for\ score\ output\r\n\ @param\ \ \ digits\ \ \ number\ of\ zeros\ desired\ in\ the\ return\ String\r\n\ @return\ \ String\ \ built\ score,\ ready\ for\ display\r\n
+comment7.params=number
+comment7.target=int\ digitCounter(int)
+comment7.text=\r\n\ Useful\ private\ method\ that\ counts\ the\ digit\ in\ any\ integer.\r\n\r\n\ @param\ number\ \ \ \ The\ number\ whose\ digits\ you\ want\ to\ count\r\n\ @return\ \ int\ \ \ \ \ The\ number\ of\ digits\ in\ the\ given\ number\r\n
+numComments=8
