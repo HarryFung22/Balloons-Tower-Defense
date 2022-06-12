@@ -14,8 +14,11 @@ public class Balloon extends Balloons
     }
     public void act()
     {
+        onPath();
         if(health < 1){
             removeMe = true;
+            ((GameWorld) getWorld()).addMoney(20);
+            ((GameWorld) getWorld()).addScore(5);
         }
     }
 }
