@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=InstructionWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ InstructionWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ the\ instructions\ page,\ where\ players\ can\ check\ the\ towers\ abilities,\r\n\ the\ balloons\ stats,\ other\ features\ and\ the\ objective\ of\ the\ game\ --\ survive.\r\n\ \r\n\ @author\ Aiden\ S\r\n\ @version\ June\ 7,\ 2022\r\n
 comment1.params=
 comment1.target=InstructionWorld()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ InstructionWorld.\r\n\ \r\n

@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class InstructionWorld here.
+ * This is the instructions page, where players can check the towers abilities,
+ * the balloons stats, other features and the objective of the game -- survive.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Aiden S
+ * @version June 7, 2022
  */
 public class InstructionWorld extends World
 {
@@ -16,12 +17,14 @@ public class InstructionWorld extends World
     public InstructionWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(800, 600, 1); 
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("enter")){
+        if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new GameWorld());
+        } else if(Greenfoot.isKeyDown("i")){
+            Greenfoot.setWorld(new StartWorld());
         }
     }
 }
