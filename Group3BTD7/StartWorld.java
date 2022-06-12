@@ -13,6 +13,8 @@ public class StartWorld extends World
     private UserInfo userInfo;
     private String displayText;
     private GreenfootImage welcomeText;
+
+    //Probably going to add some kind of background music
     
     //Constructor for the StartWorld
     public StartWorld()
