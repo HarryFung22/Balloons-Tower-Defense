@@ -152,8 +152,20 @@ public class GameWorld extends World
         }
     }
     
+    public boolean getStatOpen(){
+        return statOpen;
+    }
+    
+    public static int getHealth(){
+        return userHP;
+    }
+    
     public static void setHealth(int num){
         userHP = userHP - num;
+    }
+    
+    public static void setMoney(int cost){
+        userMoney = userMoney - cost;
     }
     
     public static void addMoney(int money){
