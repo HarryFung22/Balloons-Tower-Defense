@@ -11,17 +11,27 @@ public class StartWorld extends World
 {
     GreenfootImage background = new GreenfootImage("BTD700 Background.jpg");
     private UserInfo userInfo;
+    private String displayText;
+    private GreenfootImage welcomeText;
     
-    
+    //Constructor for the StartWorld
     public StartWorld()
     {    
         super(800, 600, 1);
         background.scale(800,600);
         setBackground(background);
         if(UserInfo.isStorageAvailable()){
-            
+            userInfo = UserInfo.getMyInfo();
+            if(userInfo != null){
+                displayText = "Weclome " + userInfo.getUserName();
+            } else{
+                displayText = "Welcome player, please login to save your scores!";
+            }
+        } else{
+            displayText = "Note: Storage is full.";
         }
-        
+        welcomeText = new GreenfootImage(displayText, 24, Color.WHITE,null);
+        getBackground().drawImage(welcomeText, 335, 400);
     }
 
     public void act(){
