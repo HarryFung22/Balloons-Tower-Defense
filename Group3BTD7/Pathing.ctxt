@@ -7,4 +7,6 @@ comment2.params=straight
 comment2.target=Pathing(boolean)
 comment3.params=
 comment3.target=void\ act()
-numComments=4
+comment4.params=
+comment4.target=void\ drawPath()
+numComments=5
