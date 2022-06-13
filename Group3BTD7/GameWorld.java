@@ -43,7 +43,7 @@ public class GameWorld extends World
 
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
     
-    private Button startButton;
+    private PlayButton playButton;
 
     /**
      * Constructor for objects of class GameWorld.
@@ -54,17 +54,16 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         
-        startButton = new Button();
-        addObject(startButton, 25, 125);
-
+        playButton = new PlayButton();
+        addObject(playButton, 25, 125);
         pathMap();
     }
 
     public void act(){
-        if(Greenfoot.mousePressed(startButton)){
+        if(Greenfoot.mousePressed(playButton)){
             start = true;
             
-            removeObject(startButton);
+            removeObject(playButton);
             
             if(balloonsLeft == 0){
                 wave++;
@@ -86,7 +85,7 @@ public class GameWorld extends World
         
         if(balloonsLeft == 0 && wave != 0){
             start = false;
-            addObject(startButton, 25, 125);
+            addObject(playButton, 25, 125);
         }
         
     }
