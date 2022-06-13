@@ -23,8 +23,6 @@ public class InstructionWorld extends World
     public void act(){
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new GameWorld());
-        } else if(Greenfoot.isKeyDown("i")){
-            Greenfoot.setWorld(new StartWorld());
-        }
+        } 
     }
 }
