@@ -10,14 +10,15 @@ public class Pathing extends Actor
 {
     public int rotation;
     public boolean straight;
+    private GreenfootImage tile;
     public Pathing(int rotation){
-        
         this.rotation = rotation;
     }
-    
+
     public Pathing(boolean straight){
         this.straight = straight;
     }
+
     public void act()
     {
         // Add your action code here.
