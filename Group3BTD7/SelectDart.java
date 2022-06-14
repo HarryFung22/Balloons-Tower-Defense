@@ -14,6 +14,6 @@ public class SelectDart extends SelectMonkey
      */
     public void act()
     {
-        // Add your action code here.
+        select("dartMonkey");
     }
 }

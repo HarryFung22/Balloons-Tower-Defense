@@ -8,12 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PlayButton extends Button
 {
-    /**
-     * Act - do whatever the PlayButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage pButton;
+    
+    public PlayButton(){
+        drawPButton();
+        setImage(pButton);
+    }
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public void drawPButton(){
+        pButton = new GreenfootImage(30, 30);
+        Color rect = new Color (66, 40 , 9);
+        pButton.setColor(rect);
+        pButton.fill();
+        
+        pButton.setColor(Color.GREEN);
+        pButton.drawPolygon(new int[] {8, 8, 22}, new int[] {8, 22, 16}, 3);
+        pButton.fillPolygon(new int[] {8, 8, 22}, new int[] {8, 22, 16}, 3);
+        
     }
 }
