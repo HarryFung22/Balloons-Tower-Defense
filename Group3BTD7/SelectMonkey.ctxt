@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SelectMonkey
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SelectMonkey\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ SelectMonkey\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=tower
 comment1.target=void\ select(java.lang.String)
 numComments=2
