@@ -32,7 +32,7 @@ public abstract class Monkeys extends Actor
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<Balloon> balloon = (ArrayList<Balloon>)getObjectsInRange(100, Balloon.class);
+        ArrayList<Balloon> balloon = (ArrayList<Balloon>)getObjectsInRange(200, Balloon.class);
         if(!balloon.isEmpty()){
             targetBalloon = balloon.get(0);
             closestTargetDistance = GameWorld.getDistance(this, targetBalloon);
@@ -53,7 +53,7 @@ public abstract class Monkeys extends Actor
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<CamoBalloon> cballoon = (ArrayList<CamoBalloon>)getObjectsInRange(100, CamoBalloon.class);
+        ArrayList<CamoBalloon> cballoon = (ArrayList<CamoBalloon>)getObjectsInRange(400, CamoBalloon.class);
         if(!cballoon.isEmpty()){
             targetCamoBalloon = cballoon.get(0);
             closestTargetDistance = GameWorld.getDistance(this, targetCamoBalloon);
