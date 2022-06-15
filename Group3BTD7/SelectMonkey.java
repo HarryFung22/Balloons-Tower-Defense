@@ -17,7 +17,15 @@ public abstract class SelectMonkey extends Actor
         }
         
         if(Greenfoot.mouseDragEnded(this)){
-            
+            if(tower == "Cannon"){
+                getWorld().addObject(new Cannon(), (pickX/60) * 60 + 30, (pickY/60) * 60 + 30);
+            } else if(tower ==  "DartMonkey"){
+                getWorld().addObject(new DartMonkey(), (pickX/60) * 60 + 30, (pickY/60) * 60 + 30);
+            } else if(tower == "SniperMonkey"){
+                getWorld().addObject(new SniperMonkey(), (pickX/60) * 60 + 30, (pickY/60) * 60 + 30);
+            } else if(tower == "SuperMonkey"){
+                getWorld().addObject(new SuperMonkey(), (pickX/60) * 60 + 30, (pickY/60) * 60 + 30);
+            }
         }
     }
 }
