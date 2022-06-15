@@ -12,6 +12,7 @@ public class DartMonkey extends Monkeys
     boolean isBought = false;
     public DartMonkey(){
         cost = 200;
+        attackSpeed = 20;
         type = "dartMonkey";
         name = "Dart Monkey";
         level = 0;
