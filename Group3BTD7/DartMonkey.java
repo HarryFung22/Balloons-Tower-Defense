@@ -19,4 +19,7 @@ public class DartMonkey extends Monkeys
         sellCost = cost / 2;
         
     }
+    public void act(){
+        findBalloon();
+    }
 }

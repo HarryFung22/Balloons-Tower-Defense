@@ -10,6 +10,7 @@ public abstract class ParentDart extends Actor
 {
     protected int projSpeed;
     protected int damage;
+    
     /**
      * Accessor that returns the current damage of the projectile
      */
