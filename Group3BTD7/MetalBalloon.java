@@ -10,7 +10,7 @@ public class MetalBalloon extends Balloons
 {
     public MetalBalloon(){
         metal = true;
-        health = 40;
+        health = 10;
         speed = 1;
     }
     public void act()

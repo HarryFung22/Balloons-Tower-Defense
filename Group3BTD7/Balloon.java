@@ -10,7 +10,7 @@ public class Balloon extends Balloons
 {
     GreenfootImage image;
     public Balloon(){
-        health = 20;
+        health = 2;
         speed = 3;
         image = getImage();
         image.scale(50,50);
