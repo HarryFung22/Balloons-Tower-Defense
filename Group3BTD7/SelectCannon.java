@@ -9,4 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class SelectCannon extends SelectMonkey
 {
     
+    
+    public void act()
+    {
+        select("Cannon");
+    }
 }

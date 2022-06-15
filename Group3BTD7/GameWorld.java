@@ -54,12 +54,27 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         
+        moreDifficult = 1;
+        
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
         pathMap();
+        
+        //Instantiate the Monkeys that can be selected
+        SelectDart selectDartMonkey = new SelectDart();
+        SelectCannon selectCannon = new SelectCannon();
+        SelectSniper selectSniperMonkey = new SelectSniper();
+        SelectSuper selectSuperMonkey = new SelectSuper();
+        
+        //Add the objects and interactable buttons into the UI
+        addObject(selectDartMonkey, 25, 525);
+        addObject(selectCannon, 25, 575);
+        addObject(selectSniperMonkey, 75, 525);
+        addObject(selectSuperMonkey, 75, 575);
     }
 
     public void act(){
+        
         if(Greenfoot.mousePressed(playButton)){
             start = true;
             
@@ -129,19 +144,19 @@ public class GameWorld extends World
         timeBetweenWaves = Greenfoot.getRandomNumber(50);
         if(timeBetweenWaves == 1){
             if(balloonOrder.get(0) == 0){
-                addObject(new Balloon(), 0 , 325);
+                addObject(new Balloon(), 0 , 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
                     balloonOrder.remove(0);
                 }
             }else if(balloonOrder.get(0) == 1){
-                addObject(new CamoBalloon(), 0, 325);
+                addObject(new CamoBalloon(), 0, 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
                     balloonOrder.remove(0);
                 }
             }else if(balloonOrder.get(0) == 2){
-                addObject(new MetalBalloon(), 0, 325);
+                addObject(new MetalBalloon(), 0, 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
                     balloonOrder.remove(0);

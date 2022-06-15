@@ -15,8 +15,11 @@ public class CamoBalloon extends Balloons
     }
     public void act()
     {
-        if(health <= 0){
-            removeMe = true;
+        onPath();
+        if(health < 1){
+            ((GameWorld) getWorld()).addMoney(20);
+            ((GameWorld) getWorld()).addScore(5);
+            removeMe();
         }
     }
 }

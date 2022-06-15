@@ -11,24 +11,6 @@ public abstract class Balloons extends Actor
     int health, speed;
     boolean camo = false;
     boolean metal = false;
-    boolean removeMe = false;
-    public void act()
-    {
-        if(!removeMe){
-            if(health < 1){
-                removeMe = true;
-            }
-        }else{
-            getWorld().removeObject(this);
-        }
-    }
-    
-    public void delete(){
-        if(removeMe == true){
-            getWorld().removeObject(this);
-            ((GameWorld) getWorld()).setHealth(health);
-        }
-    }
     
     public void onPath(){
         move(speed);
@@ -64,6 +46,13 @@ public abstract class Balloons extends Actor
                 setRotation(paths.rotation);
             }
         }
-        removeMe = true;
+        removeMe();
+    }
+    
+    public void removeMe(){
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+            ((GameWorld)getWorld()).setHealth(health);
+        }
     }
 }
