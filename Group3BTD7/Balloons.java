@@ -49,6 +49,18 @@ public abstract class Balloons extends Actor
         removeMe();
     }
     
+    public void takeDamage(){
+        try{
+            Dart dart = (Dart)getOneIntersectingObject(Dart.class);
+            if(dart != null){
+                health = health - dart.getDamage();
+            }
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
     public void removeMe(){
         if(isAtEdge()){
             getWorld().removeObject(this);
