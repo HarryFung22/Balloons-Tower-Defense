@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class ParentDart extends Actor
 {
-    protected int projSpeed;
+    protected int projSpeed = 8;
     protected int damage;
     
     /**
@@ -20,7 +20,7 @@ public abstract class ParentDart extends Actor
     
     public void fire(){
         move(projSpeed);
-        if(this.isTouching(Balloons.class)){
+        if(isAtEdge()){
             getWorld().removeObject(this);
         }
     }

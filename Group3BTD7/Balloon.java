@@ -10,8 +10,8 @@ public class Balloon extends Balloons
 {
     GreenfootImage image;
     public Balloon(){
-        health = 1;
-        speed = 2;
+        health = 20;
+        speed = 3;
         image = getImage();
         image.scale(50,50);
         setImage(image);
@@ -19,10 +19,11 @@ public class Balloon extends Balloons
     public void act()
     {
         onPath();
+        attacked();
         if(health < 1){
             ((GameWorld) getWorld()).addMoney(20);
             ((GameWorld) getWorld()).addScore(5);
-            removeMe();
+            getWorld().removeObject(this);
         }
     }
 }

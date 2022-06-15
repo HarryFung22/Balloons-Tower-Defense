@@ -12,6 +12,38 @@ public abstract class Balloons extends Actor
     boolean camo = false;
     boolean metal = false;
     
+    public void attacked(){
+        try{
+            Dart dart = (Dart)getOneIntersectingObject(Dart.class);
+            if(dart != null){
+                health = health - dart.getDamage();
+                getWorld().removeObject(dart);
+            }
+        }catch (Exception e){
+            
+        }
+        
+        try{
+            Bomb bomb = (Bomb)getOneIntersectingObject(Bomb.class);
+            if(bomb != null){
+                health = health - bomb.getDamage();
+                getWorld().removeObject(bomb);
+            }
+        }catch (Exception e){
+            
+        }
+        
+        try{
+            SniperDart sDart = (SniperDart)getOneIntersectingObject(SniperDart.class);
+            if(sDart != null){
+                health = health - sDart.getDamage();
+                getWorld().removeObject(sDart);
+            }
+        }catch (Exception e){
+            
+        }
+    }
+    
     public void onPath(){
         move(speed);
         List<Pathing> path90 = getObjectsAtOffset(-25,-25,  Pathing.class);
@@ -47,18 +79,6 @@ public abstract class Balloons extends Actor
             }
         }
         removeMe();
-    }
-    
-    public void takeDamage(){
-        try{
-            Dart dart = (Dart)getOneIntersectingObject(Dart.class);
-            if(dart != null){
-                health = health - dart.getDamage();
-            }
-        }
-        catch(Exception e){
-            
-        }
     }
     
     public void removeMe(){

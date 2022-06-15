@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Dart extends ParentDart
 {
     public Dart(){
-        projSpeed = 30;
+        projSpeed = 40;
         damage = 1;
     }
     public void act()
     {
-        // Add your action code here.
+        fire();
     }
 }
