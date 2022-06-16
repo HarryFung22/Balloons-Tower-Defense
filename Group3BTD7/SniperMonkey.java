@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class SniperMonkey here.
  * 
@@ -17,5 +17,14 @@ public class SniperMonkey extends Monkeys
         level = 0;
         upgradeCost = cost * 2;
         sellCost = cost / 2;
+    }
+    
+    public void act(){
+        ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
+        if(cBalloon.size() > 0){
+            findMetal();
+        }else{
+            findBalloon("SniperMonkey");
+        }
     }
 }
