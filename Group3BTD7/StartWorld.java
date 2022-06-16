@@ -15,23 +15,14 @@ public class StartWorld extends World
     private GreenfootImage welcomeText;
 
     //Probably going to add some kind of background music
-    
+
     //Constructor for the StartWorld
     public StartWorld()
     {    
         super(800, 600, 1);
         background.scale(800,600);
         setBackground(background);
-        if(UserInfo.isStorageAvailable()){
-            userInfo = UserInfo.getMyInfo();
-            if(userInfo != null){
-                displayText = "Weclome " + userInfo.getUserName();
-            } else{
-                displayText = "Welcome player, please login to save your scores!";
-            }
-        } else{
-            displayText = "Note: Storage is full.";
-        }
+        displayText = "Welcome Player";
         welcomeText = new GreenfootImage(displayText, 24, Color.WHITE,null);
         getBackground().drawImage(welcomeText, 335, 400);
     }
