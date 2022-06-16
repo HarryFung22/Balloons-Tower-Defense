@@ -33,7 +33,4 @@ public class Cannon extends Monkeys
         }
     }
     
-    public String towerName(){
-        return name;
-    }
 }
