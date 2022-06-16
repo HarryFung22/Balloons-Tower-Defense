@@ -10,7 +10,7 @@ public class Bomb extends ParentDart
 {
     public Bomb(){
         projSpeed = 20;
-        damage = 5;
+        damage = 10;
     }
     public void act()
     {

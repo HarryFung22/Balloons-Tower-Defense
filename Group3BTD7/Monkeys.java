@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Monkeys here.
  * 
- * @author (your name) 
+ * @author Harry F 
  * @version (a version number or a date)
  */
 public abstract class Monkeys extends Actor
@@ -19,6 +19,7 @@ public abstract class Monkeys extends Actor
     protected MetalBalloon targetMetalBalloon;
 
     MouseInfo mouse = Greenfoot.getMouseInfo();
+    
     /**
      * Act - do whatever the Monkeys wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,7 +29,7 @@ public abstract class Monkeys extends Actor
         // Add your action code here.
     }
 
-    protected void findBalloon(){
+    protected void findBalloon(String type){
         double distanceToActor;
         double closestTargetDistance = 0;
 
@@ -44,7 +45,11 @@ public abstract class Monkeys extends Actor
                 }
             }
             turnTowards(targetBalloon.getX(), targetBalloon.getY());
-            shootDart();
+            if(type == "DartMonkey"){
+                shootDart();
+            }else if (type == "Cannon"){
+                shootBomb();
+            }
         } else if(balloon.isEmpty()){
         }
     }
@@ -74,10 +79,10 @@ public abstract class Monkeys extends Actor
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<MetalBalloon> mballoon = (ArrayList<MetalBalloon>)getObjectsInRange(100, MetalBalloon.class);
+        ArrayList<MetalBalloon> mballoon = (ArrayList<MetalBalloon>)getObjectsInRange(150, MetalBalloon.class);
         if(!mballoon.isEmpty()){
             targetMetalBalloon = mballoon.get(0);
-            closestTargetDistance = GameWorld.getDistance(this, targetCamoBalloon);
+            closestTargetDistance = GameWorld.getDistance(this, targetMetalBalloon);
             for(MetalBalloon b : mballoon){
                 distanceToActor = GameWorld.getDistance(this, b);
                 if(distanceToActor < closestTargetDistance){
@@ -102,11 +107,17 @@ public abstract class Monkeys extends Actor
     }
     
     protected void shootBomb(){
+        ArrayList<MetalBalloon> mBalloon = (ArrayList<MetalBalloon>)getWorld().getObjects(MetalBalloon.class);
+        
         fireRate++;
         if(fireRate > attackSpeed){
                 Bomb b = new Bomb();
                 getWorld().addObject(b, getX(), getY());
-                b.turnTowards(targetMetalBalloon.getX(), targetMetalBalloon.getY());
+                if(mBalloon.size() > 0){
+                    b.turnTowards(targetMetalBalloon.getX(), targetMetalBalloon.getY());
+                }else{
+                    b.turnTowards(targetBalloon.getX(), targetBalloon.getY());
+                }
                 fireRate = 0;
             }
     }
