@@ -10,7 +10,11 @@ public class Cannon extends Monkeys
 {
     MouseInfo mouse = Greenfoot.getMouseInfo();
     boolean isBought = false;
+    GreenfootImage image;
     public Cannon(){
+        image = new GreenfootImage("Bomb Tower.png");
+        image.scale(image.getWidth()/9, image.getHeight()/9);
+        setImage(image);
         level = 0;
         attackSpeed = 20;
         cost = 400;

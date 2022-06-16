@@ -8,7 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SelectDart extends SelectMonkey
 {
-    
+    GreenfootImage image;
+    public SelectDart(){
+        image = new GreenfootImage("Dart Monkey.png");
+        image.scale(image.getWidth()/8, image.getHeight()/8);
+        setImage(image);
+    }
     
     public void act()
     {

@@ -10,7 +10,11 @@ public class DartMonkey extends Monkeys
 {
     MouseInfo mouse = Greenfoot.getMouseInfo();
     boolean isBought = false;
+    GreenfootImage image;
     public DartMonkey(){
+        image = new GreenfootImage("Dart Monkey.png");
+        image.scale(image.getWidth()/8, image.getHeight()/8);
+        setImage(image);
         cost = 200;
         attackSpeed = 20;
         type = "dartMonkey";
