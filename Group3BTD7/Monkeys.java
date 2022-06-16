@@ -49,6 +49,8 @@ public abstract class Monkeys extends Actor
                 shootDart();
             }else if (type == "Cannon"){
                 shootBomb();
+            }else if (type == "SniperMonkey"){
+                shootSniper();
             }
         } else if(balloon.isEmpty()){
         }
@@ -123,11 +125,17 @@ public abstract class Monkeys extends Actor
     }
     
     protected void shootSniper(){
+        ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
+        
         fireRate++;
         if(fireRate > attackSpeed){
                 SniperDart s = new SniperDart();
                 getWorld().addObject(s, getX(), getY());
-                s.turnTowards(targetCamoBalloon.getX(), targetCamoBalloon.getY());
+                if(cBalloon.size() > 0){
+                    s.turnTowards(targetCamoBalloon.getX(), targetCamoBalloon.getY());
+                }else{
+                    s.turnTowards(targetBalloon.getX(), targetBalloon.getY());
+                }
                 fireRate = 0;
             }
     }
