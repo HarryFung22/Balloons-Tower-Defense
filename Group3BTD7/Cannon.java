@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Cannon here.
  * 
@@ -16,11 +16,24 @@ public class Cannon extends Monkeys
         image.scale(image.getWidth()/9, image.getHeight()/9);
         setImage(image);
         level = 0;
-        attackSpeed = 20;
+        attackSpeed = 60;
         cost = 400;
         type = "cannonTower";
         name = "Cannon";
         upgradeCost = cost * 2;
         sellCost = cost / 2;
+    }
+    
+    public void act(){
+        ArrayList<MetalBalloon> mBalloon = (ArrayList<MetalBalloon>)getWorld().getObjects(MetalBalloon.class);
+        if(mBalloon.size() > 0){
+            findMetal();
+        }else{
+            findBalloon("Cannon");
+        }
+    }
+    
+    public String towerName(){
+        return name;
     }
 }
