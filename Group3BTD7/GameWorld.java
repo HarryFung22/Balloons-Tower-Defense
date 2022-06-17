@@ -11,6 +11,7 @@ import java.util.ListIterator;
 public class GameWorld extends World
 {
 
+    private GreenfootImage bg = new GreenfootImage("flowerbackground.jfif");
     int map [][] = {
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -44,7 +45,26 @@ public class GameWorld extends World
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
     
     private PlayButton playButton;
-
+    private RemoveButton removeButton;
+    MouseInfo mouse = Greenfoot.getMouseInfo();
+    
+    Label healthTitle = new Label("Health: " + userHP, 40);
+    Label moneyTitle = new Label("Money: " + userMoney, 40);
+    Label waveTitle = new Label("Wave: " + wave, 40);
+    Label scoreTitle = new Label("Score: " + score, 40);
+    Label rangePrice = new Label("$200|", 25);
+    Label slowPrice = new Label("$150|", 25);
+    Label reconPrice = new Label("$350|", 25);
+    Label meleePrice = new Label("$400|", 25);
+    
+    Label towerName = new Label("", 30);
+    Label towerAttackSpeed = new Label("", 30);
+    Label towerRange = new Label("", 30);
+    
+    
+    
+    Label sellPriceTitle = new Label("",30);
+    SellButton sellButton = new SellButton();
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -54,10 +74,15 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         
+        setBackground(bg);
+        
         moreDifficult = 1;
         
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
+        
+        removeButton = new RemoveButton();
+        addObject(removeButton, 25, 400);
         pathMap();
         
         //Instantiate the Monkeys that can be selected
@@ -67,10 +92,27 @@ public class GameWorld extends World
         SelectSuper selectSuperMonkey = new SelectSuper();
         
         //Add the objects and interactable buttons into the UI
-        addObject(selectDartMonkey, 25, 525);
-        addObject(selectCannon, 25, 575);
-        addObject(selectSniperMonkey, 75, 525);
-        addObject(selectSuperMonkey, 75, 575);
+        addObject(selectDartMonkey, 220, 485);
+        addObject(selectCannon, 220, 550);
+        addObject(selectSniperMonkey, 300, 485);
+        addObject(selectSuperMonkey, 300, 550);
+        
+        userHP = 100;
+        healthTitle.setFillColor(Color.RED);
+        addObject(healthTitle, 90, 490);
+        
+        userMoney = 500;
+        moneyTitle.setFillColor(Color.GREEN);
+        addObject(moneyTitle, 90, 530);
+        
+        score = 0;
+        scoreTitle.setFillColor(Color.WHITE);
+        addObject(scoreTitle, 90, 570);
+        
+        waveTitle.setFillColor(Color.WHITE);
+        addObject(waveTitle, 125, 125);
+        
+        
     }
 
     public void act(){
@@ -103,6 +145,15 @@ public class GameWorld extends World
             addObject(playButton, 25, 125);
         }
         
+        healthTitle.setValue("Health: " + userHP);
+        
+        if(userHP <= 0){
+            Greenfoot.setWorld(new GameOverWorld());
+        }
+        
+        moneyTitle.setValue("Money: " + userMoney);
+        waveTitle.setValue("Wave: " + wave);
+        scoreTitle.setValue("Score: " + score);
     }
 
     private void pathMap(){
@@ -165,6 +216,14 @@ public class GameWorld extends World
         }
     }
     
+    public boolean getSold(){
+        return sold;
+    }
+    
+    public void setSold(boolean current){
+        sold = current;
+    }
+    
     public boolean getStatOpen(){
         return statOpen;
     }
@@ -175,6 +234,10 @@ public class GameWorld extends World
     
     public static void setHealth(int num){
         userHP = userHP - num;
+    }
+    
+    public static int getMoney(){
+        return userMoney;
     }
     
     public static void setMoney(int cost){

@@ -14,6 +14,7 @@ public class Cannon extends Monkeys
     public Cannon(){
         image = new GreenfootImage("Bomb Tower.png");
         image.scale(image.getWidth()/9, image.getHeight()/9);
+        image.rotate(180);
         setImage(image);
         level = 0;
         attackSpeed = 60;
@@ -22,6 +23,7 @@ public class Cannon extends Monkeys
         name = "Cannon";
         upgradeCost = cost * 2;
         sellCost = cost / 2;
+        
     }
     
     public void act(){

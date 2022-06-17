@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class SniperDart extends ParentDart
 {
     public SniperDart(){
-        projSpeed = 100;
-        damage = 2;
+        projSpeed = 150;
+        damage = 4;
     }
 
     public void act()

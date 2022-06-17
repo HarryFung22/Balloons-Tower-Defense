@@ -11,6 +11,8 @@ public abstract class Monkeys extends Actor
     protected int fireRate, attackSpeed, cost, level, upgradeCost, sellCost;
 
     protected boolean isBought = false;
+    
+    int balance;
 
     protected String type, name, title;
 
@@ -26,7 +28,14 @@ public abstract class Monkeys extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        if(!Greenfoot.mouseClicked(this)){
+            balance = ((GameWorld)getWorld()).getMoney();
+            if(!isBought){
+                purchaseTower(cost);
+                isBought = true;
+                setLocation((mouse.getX() / 50) * 50 + 25, (mouse.getY() / 50) * 50 + 25);
+            }
+        }
     }
 
     protected void findBalloon(String type){
@@ -96,6 +105,10 @@ public abstract class Monkeys extends Actor
             shootBomb();
         } else if(mballoon.isEmpty()){
         }
+    }
+    
+    public void purchaseTower(int cost){
+        ((GameWorld)getWorld()).setMoney(cost);
     }
 
     protected void shootDart(){

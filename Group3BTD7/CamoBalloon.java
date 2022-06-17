@@ -10,8 +10,8 @@ public class CamoBalloon extends Balloons
 {
     public CamoBalloon(){
         camo = true;
-        health = 10;
-        speed = 4;
+        health = 2;
+        speed = 2;
     }
     public void act()
     {
