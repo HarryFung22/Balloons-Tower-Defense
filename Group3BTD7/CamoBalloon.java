@@ -8,10 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CamoBalloon extends Balloons
 {
+    GreenfootImage image;
     public CamoBalloon(){
         camo = true;
         health = 10;
         speed = 4;
+        image = getImage();
+        image.scale(50,50);
+        setImage(image);
     }
     public void act()
     {
