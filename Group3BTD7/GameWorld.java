@@ -45,7 +45,6 @@ public class GameWorld extends World
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
     
     private PlayButton playButton;
-    private RemoveButton removeButton;
     MouseInfo mouse = Greenfoot.getMouseInfo();
     
     Label healthTitle = new Label("Health: " + userHP, 40);
@@ -80,9 +79,7 @@ public class GameWorld extends World
         
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
-        
-        removeButton = new RemoveButton();
-        addObject(removeButton, 25, 400);
+
         pathMap();
         
         //Instantiate the Monkeys that can be selected

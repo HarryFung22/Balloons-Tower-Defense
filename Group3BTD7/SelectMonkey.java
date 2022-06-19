@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class SelectMonkey here.
  * 
@@ -11,60 +11,75 @@ public abstract class SelectMonkey extends Actor
     int pickX, pickY;
     boolean pressed = false;
     public void select(String tower){
+        
+        ArrayList<Selected> s = (ArrayList<Selected>)getWorld().getObjects(Selected.class);
+        
+        int balance = ((GameWorld)getWorld()).getMoney();
 
         RemoveButton r = (RemoveButton)getOneIntersectingObject(RemoveButton.class);
-        
-        Selected s = (Selected)getOneIntersectingObject(Selected.class);
+
+        RemoveButton rButton = new RemoveButton();
         Selected select = new Selected();
+        
+        if(s.size() <= 0){
+            pressed = false;
+        }
+        
         if(Greenfoot.mouseClicked(this)){
             pressed = true;
             MouseInfo m = Greenfoot.getMouseInfo();
             pickX = m.getX();
             pickY = m.getY();
             getWorld().addObject(select, pickX, pickY);
+            getWorld().addObject(rButton, 25, 400);
         }
         
+        //create a new remove button such as RemoveButton removeButton = new RemoveButton(x coordinate, y coordinate);
+        if(Greenfoot.mouseClicked(rButton)){
+            getWorld().removeObjects(getWorld().getObjects(Selected.class));
+            getWorld().removeObject(rButton);
+        }
         
-        int balance = ((GameWorld)getWorld()).getMoney();
-
         if(pressed == true && Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() == null){
-            MouseInfo m = Greenfoot.getMouseInfo();
-            if(tower == "Cannon" && balance - 400 >= 0){
-                getWorld().addObject(new Cannon(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(400);
-                pressed = false;
-                getWorld().removeObject(s);
-            }else{
-                getWorld().removeObject(s);
+                MouseInfo m = Greenfoot.getMouseInfo();
+                if(tower == "Cannon" && balance - 400 >= 0){
+                    getWorld().addObject(new Cannon(), m.getX(), m.getY());
+                    ((GameWorld)getWorld()).setMoney(400);
+                    
+                    
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                    //getWorld().removeObject(s);
+                }else{
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }
+
+                if(tower ==  "DartMonkey" && balance - 200 >= 0){
+                    getWorld().addObject(new DartMonkey(), m.getX(), m.getY());
+                    ((GameWorld)getWorld()).setMoney(200);
+                    getWorld().removeObjects(getWorld().getObjects(RemoveButton.class));
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                } else{
+                    getWorld().removeObjects(getWorld().getObjects(RemoveButton.class));
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }
+
+                if(tower == "SniperMonkey" && balance - 300 >= 0){
+                    getWorld().addObject(new SniperMonkey(), m.getX(), m.getY());
+                    ((GameWorld)getWorld()).setMoney(300);
+                    
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }else{
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }
+
+                if(tower == "SuperMonkey" && balance - 600 >= 0){
+                    getWorld().addObject(new SuperMonkey(), m.getX(), m.getY());
+                    ((GameWorld)getWorld()).setMoney(600);
+                    
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }else{
+                    getWorld().removeObjects(getWorld().getObjects(Selected.class));
+                }
             }
-            
-            if(tower ==  "DartMonkey" && balance - 200 >= 0){
-                getWorld().addObject(new DartMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(200);
-                pressed = false;
-                getWorld().removeObject(s);
-            } else{
-                getWorld().removeObject(s);
-            }
-            
-            if(tower == "SniperMonkey" && balance - 300 >= 0){
-                getWorld().addObject(new SniperMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(300);
-                pressed = false;
-                getWorld().removeObject(s);
-            }else{
-                getWorld().removeObject(s);
-            }
-            
-            if(tower == "SuperMonkey" && balance - 600 >= 0){
-                getWorld().addObject(new SuperMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(600);
-                pressed = false;
-                getWorld().removeObject(s);
-            }else{
-                getWorld().removeObject(s);
-            }
-        }
-        
     }
 }

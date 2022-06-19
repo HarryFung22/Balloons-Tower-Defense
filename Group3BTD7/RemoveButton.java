@@ -8,12 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RemoveButton extends Button
 {
-    /**
-     * Act - do whatever the RemoveButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private boolean touched;
+    public RemoveButton(){
+        touched = false;
+    }
     public void act()
     {
-        // Add your action code here.
+        pressed();
+    }
+    
+    public void pressed(){
+        if(Greenfoot.mouseClicked(this)){
+            touched = !touched;//true;
+        }
+    }
+    
+    public boolean getTouched(){
+        return touched;
     }
 }
