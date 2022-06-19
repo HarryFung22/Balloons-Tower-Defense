@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=GameWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ GameWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ GameWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=GameWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GameWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GameWorld.\r\n\ \r\n
 comment10.params=money
 comment10.target=void\ addMoney(int)
 comment11.params=points
@@ -14,7 +14,7 @@ comment3.params=
 comment3.target=void\ pathMap()
 comment4.params=a\ b
 comment4.target=float\ getDistance(greenfoot.Actor,\ greenfoot.Actor)
-comment4.text=\n\ This\ method\ determines\ the\ distance\ between\ 2\ actors\ in\ a\ world\n\ Code\ courtesy\ of\ Mr.Cohen\n\ \n\ @param\ a\ The\ first\ actor\ that\ will\ be\ used\ to\ measure\ the\ distance\n\ @param\ b\ The\ second\ actor\ that\ will\ be\ used\ to\ measure\ the\ distance\ between\ the\ two\ actors\n
+comment4.text=\r\n\ This\ method\ determines\ the\ distance\ between\ 2\ actors\ in\ a\ world\r\n\ Code\ courtesy\ of\ Mr.Cohen\r\n\ \r\n\ @param\ a\ The\ first\ actor\ that\ will\ be\ used\ to\ measure\ the\ distance\r\n\ @param\ b\ The\ second\ actor\ that\ will\ be\ used\ to\ measure\ the\ distance\ between\ the\ two\ actors\r\n
 comment5.params=
 comment5.target=void\ spawnBalloon()
 comment6.params=
