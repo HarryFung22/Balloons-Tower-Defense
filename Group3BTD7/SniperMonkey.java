@@ -22,7 +22,7 @@ public class SniperMonkey extends Monkeys
     public void act(){
         ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
         if(cBalloon.size() > 0){
-            findMetal();
+            findCamo();
         }else{
             findBalloon("SniperMonkey");
         }

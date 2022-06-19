@@ -44,6 +44,11 @@ public class GameWorld extends World
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
     
     private PlayButton playButton;
+    
+    Label healthTitle = new Label("Health: " + userHP, 40);
+    Label moneyTitle = new Label("Money: " + userMoney, 40);
+    Label waveTitle = new Label("Wave: " + wave, 40);
+    Label scoreTitle = new Label("Score: " + score, 40);
 
     /**
      * Constructor for objects of class GameWorld.
@@ -71,10 +76,28 @@ public class GameWorld extends World
         addObject(selectCannon, 25, 575);
         addObject(selectSniperMonkey, 75, 525);
         addObject(selectSuperMonkey, 75, 575);
+        
+        userHP = 100;
+        healthTitle.setFillColor(Color.RED);
+        addObject(healthTitle, 680, 25);
+        
+        userMoney = 500;
+        moneyTitle.setFillColor(Color.GREEN);
+        addObject(moneyTitle, 680, 75);
+        
+        score = 0;
+        scoreTitle.setFillColor(Color.WHITE);
+        addObject(scoreTitle, 650, 125);
+        
+        waveTitle.setFillColor(Color.WHITE);
+        addObject(waveTitle, 125, 125);
     }
 
     public void act(){
-        
+        healthTitle.setValue("Health: " + userHP);
+        moneyTitle.setValue("Money: " + userMoney);
+        waveTitle.setValue("Wave: " + wave);
+        scoreTitle.setValue("Score: " + score);
         if(Greenfoot.mousePressed(playButton)){
             start = true;
             
@@ -183,6 +206,10 @@ public class GameWorld extends World
     
     public static void addMoney(int money){
         userMoney = userMoney + money;
+    }
+    
+    public static int getMoney(){
+        return userMoney;
     }
     
     public static void addScore(int points){
