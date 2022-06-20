@@ -20,20 +20,77 @@ public abstract class Monkeys extends Actor
 
     MouseInfo mouse = Greenfoot.getMouseInfo();
     
+    int balloonRange;
+    
+    boolean stats = false;
+    boolean poor = false;
+    
+    int balance;
+    
     /**
      * Act - do whatever the Monkeys wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        // Add your action code here.
+        Pathing p = (Pathing)getOneIntersectingObject(Pathing.class);
+        Square s = (Square)getOneIntersectingObject(Square.class);
+        SelectMonkey sel = (SelectMonkey)getOneIntersectingObject(SelectMonkey.class);
+        Monkeys m = (Monkeys)getOneIntersectingObject(Monkeys.class);
+        if(!Greenfoot.mouseClicked(this) && p == null && s == null && sel == null && m == null){
+            balance = ((GameWorld)getWorld()).getMoney();
+            
+            if(!isBought){
+                buyTower(cost);
+                isBought = true;
+                setLocation((mouse.getX() / 50) * 50 + 25, (mouse.getY() / 50) * 50 + 25);
+            }
+        } else if(m != null){
+            getWorld().removeObject(m);
+        }else if(isBought == true && Greenfoot.mouseClicked(this) && stats == false){
+            if(((GameWorld)getWorld()).getStatOpen() == true){
+                stats = false;
+                ((GameWorld)getWorld()).menu(title, 0, 0, stats, upgradeCost, sellCost, getX(), getY());
+            }
+        }else if(isBought == true && Greenfoot.mouseClicked(this) && stats == true){
+            if(((GameWorld)getWorld()).getStatOpen() == true){
+                stats = false;
+                ((GameWorld)getWorld()).menu(title, 0, 0, stats, upgradeCost, sellCost,getX(), getY());
+            }
+        }else{
+            getWorld().removeObject(this);
+        }
+        
+        if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost >= 0){
+            if(level <= 4){
+                level++;
+                title = (name + "lvl." + level);
+                if(attackSpeed > 1){
+                    attackSpeed = attackSpeed - 4;
+                }
+                
+                ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(),stats, upgradeCost, sellCost, getX(), getY());
+                
+                ((GameWorld)getWorld()).setMoney(upgradeCost);
+            }
+            ((GameWorld)getWorld()).setUpgraded(false);
+        }
+        
+        if(stats && ((GameWorld)getWorld()).getSold() == true){
+            stats = false;
+            ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(), stats, upgradeCost, sellCost, getX(), getY());
+            ((GameWorld)getWorld()).setMoney(-1 * sellCost);
+            ((GameWorld)getWorld()).setSold(false);
+            getWorld().removeObject(this);
+        }
     }
 
     protected void findBalloon(String type){
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<Balloon> balloon = (ArrayList<Balloon>)getObjectsInRange(200, Balloon.class);
+        balloonRange = 200;
+        ArrayList<Balloon> balloon = (ArrayList<Balloon>)getObjectsInRange(balloonRange, Balloon.class);
         if(!balloon.isEmpty()){
             targetBalloon = balloon.get(0);
             closestTargetDistance = GameWorld.getDistance(this, targetBalloon);
@@ -62,7 +119,8 @@ public abstract class Monkeys extends Actor
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<CamoBalloon> cballoon = (ArrayList<CamoBalloon>)getObjectsInRange(400, CamoBalloon.class);
+        balloonRange = 400;
+        ArrayList<CamoBalloon> cballoon = (ArrayList<CamoBalloon>)getObjectsInRange(balloonRange, CamoBalloon.class);
         if(!cballoon.isEmpty()){
             targetCamoBalloon = cballoon.get(0);
             closestTargetDistance = GameWorld.getDistance(this, targetCamoBalloon);
@@ -83,7 +141,8 @@ public abstract class Monkeys extends Actor
         double distanceToActor;
         double closestTargetDistance = 0;
 
-        ArrayList<MetalBalloon> mballoon = (ArrayList<MetalBalloon>)getObjectsInRange(150, MetalBalloon.class);
+        balloonRange = 150;
+        ArrayList<MetalBalloon> mballoon = (ArrayList<MetalBalloon>)getObjectsInRange(balloonRange, MetalBalloon.class);
         if(!mballoon.isEmpty()){
             targetMetalBalloon = mballoon.get(0);
             closestTargetDistance = GameWorld.getDistance(this, targetMetalBalloon);
@@ -140,6 +199,18 @@ public abstract class Monkeys extends Actor
                 }
                 fireRate = 0;
             }
+    }
+    
+    public void buyTower(int cost){
+        ((GameWorld) getWorld()).setMoney(cost);
+    }
+    
+    public int getRange(){
+        return balloonRange;
+    }
+    
+    public void setTowerStats(boolean b){
+        stats = b;
     }
 }
 

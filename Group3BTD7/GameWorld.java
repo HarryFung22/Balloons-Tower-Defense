@@ -42,14 +42,29 @@ public class GameWorld extends World
     private boolean statOpen;
 
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
-    
+
     private PlayButton playButton;
-    
+
     Label healthTitle = new Label("Health: " + userHP, 40);
     Label moneyTitle = new Label("Money: " + userMoney, 40);
     Label waveTitle = new Label("Wave: " + wave, 40);
     Label scoreTitle = new Label("Score: " + score, 40);
+    Label sniperPrice = new Label("$300|", 25);
+    Label dartPrice = new Label("$200|", 25);
+    Label bombPrice = new Label("$400|", 25);
+    Label superPrice = new Label("$600|", 25);
 
+    Label towerName = new Label("", 30);
+    Label towerAttackSpeed = new Label("", 30);
+    Label towerRange = new Label("", 30);
+
+    Label upgradeCostTitle = new Label("", 30);
+    UpgradeButton upgradeButton = new UpgradeButton();
+
+    Label sellPriceTitle = new Label("",30);
+    SellButton sellButton = new SellButton();
+
+    Selected circle = new Selected();
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -58,39 +73,54 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
-        
+
         moreDifficult = 1;
-        
+
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
         pathMap();
-        
+
         //Instantiate the Monkeys that can be selected
         SelectDart selectDartMonkey = new SelectDart();
         SelectCannon selectCannon = new SelectCannon();
         SelectSniper selectSniperMonkey = new SelectSniper();
         SelectSuper selectSuperMonkey = new SelectSuper();
-        
+
         //Add the objects and interactable buttons into the UI
         addObject(selectDartMonkey, 25, 525);
         addObject(selectCannon, 25, 575);
         addObject(selectSniperMonkey, 75, 525);
         addObject(selectSuperMonkey, 75, 575);
-        
+
         userHP = 100;
         healthTitle.setFillColor(Color.RED);
         addObject(healthTitle, 680, 25);
-        
+
         userMoney = 500;
         moneyTitle.setFillColor(Color.GREEN);
         addObject(moneyTitle, 680, 75);
-        
+
         score = 0;
         scoreTitle.setFillColor(Color.WHITE);
         addObject(scoreTitle, 650, 125);
         
+        sniperPrice.setFillColor(Color.WHITE);
+        addObject(sniperPrice, 25,75); 
+        dartPrice.setFillColor(Color.WHITE);
+        addObject(dartPrice, 75,75); 
+        bombPrice.setFillColor(Color.WHITE);
+        addObject(bombPrice, 125,75); 
+        superPrice.setFillColor(Color.WHITE);
+        addObject(superPrice, 175,75); 
+
         waveTitle.setFillColor(Color.WHITE);
         addObject(waveTitle, 125, 125);
+        
+        upgradeCostTitle.setFillColor(Color.GREEN);
+        sellPriceTitle.setFillColor(Color.RED);
+        
+        start = false;
+        statOpen = false;
     }
 
     public void act(){
@@ -100,36 +130,36 @@ public class GameWorld extends World
         scoreTitle.setValue("Score: " + score);
         if(Greenfoot.mousePressed(playButton)){
             start = true;
-            
+
             removeObject(playButton);
-            
+
             if(balloonsLeft == 0){
                 wave++;
                 if(wave == 5 || wave == 20){
                     moreDifficult++;
                 }
                 balloonsLeft = (Greenfoot.getRandomNumber(3) + 10) * wave;
-                
+
                 for(int i = 0; i < balloonsLeft; i++){
                     spawn = Greenfoot.getRandomNumber(moreDifficult);
                     balloonOrder.add(spawn);
                 }
             }
         }
-        
+
         if(start && balloonsLeft > 0){
             spawnBalloon();
         }
-        
+
         if(balloonsLeft == 0 && wave != 0){
             start = false;
             addObject(playButton, 25, 125);
         }
-        
+
         if(userHP <=0){
             Greenfoot.setWorld(new GameOverWorld());
         }
-        
+
     }
 
     private void pathMap(){
@@ -167,6 +197,50 @@ public class GameWorld extends World
         return (float)distance;
     }
 
+    public void menu(String displayName, int attackspeed, int range, boolean on, int upgradeCost, int sellPrice, int towerX, int towerY){
+        if(on){
+            //List out all labels and titles to show information to user
+            towerName.setValue(displayName);
+            towerAttackSpeed.setValue("Atk Delay: " + attackspeed);
+            towerRange.setValue("Range: " + range);
+            upgradeCostTitle.setValue("Upgrade: $" + upgradeCost); 
+            sellPriceTitle.setValue("Sell: $" + sellPrice);
+            
+            //Add those labels into the tower menu interface 
+            addObject(towerName, 300, 20);
+            addObject(towerAttackSpeed, 300, 45);
+            addObject(towerRange, 300, 65);
+            addObject(upgradeCostTitle, 500, 20);
+            addObject(sellPriceTitle, 500, 45);
+            addObject(upgradeButton, 480, 75);
+            addObject(sellButton, 520, 75);
+            
+            //Add a green circle to show the user which tower they have selected
+            addObject(circle, towerX, towerY);
+            
+            //Tell the computer that there is currently a tower menu open
+            statOpen = true;
+        }
+        //Else if the tower menu is asked to be turned off
+        else if(!on){
+            //Set all label values to nothing
+            towerName.setValue("");
+            towerAttackSpeed.setValue("");
+            towerRange.setValue("");
+            
+            upgradeCostTitle.setValue("");
+            removeObject(upgradeButton);
+            sellPriceTitle.setValue("");
+            removeObject(sellButton);
+            
+            //Remove the green circle as the user is no longer selecting the respective tower's menu
+            removeObject(circle);
+            
+            //Tell the computer that there is no tower menu open anymore
+            statOpen = false;
+        }
+    }
+
     private void spawnBalloon(){
         timeBetweenWaves = Greenfoot.getRandomNumber(50);
         if(timeBetweenWaves == 1){
@@ -192,30 +266,46 @@ public class GameWorld extends World
         }
     }
     
+    public boolean getUpgraded(){
+        return upgraded;
+    }
+    
+    public void setUpgraded(boolean b){
+        upgraded = b;
+    }
+    
+    public boolean getSold(){
+        return sold;
+    }
+    
+    public void setSold(boolean b){
+        sold = b;
+    }
+
     public boolean getStatOpen(){
         return statOpen;
     }
-    
+
     public static int getHealth(){
         return userHP;
     }
-    
+
     public static void setHealth(int num){
         userHP = userHP - num;
     }
-    
+
     public static void setMoney(int cost){
         userMoney = userMoney - cost;
     }
-    
+
     public static void addMoney(int money){
         userMoney = userMoney + money;
     }
-    
+
     public static int getMoney(){
         return userMoney;
     }
-    
+
     public static void addScore(int points){
         score = score + points;
     }
