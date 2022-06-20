@@ -8,7 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SelectSuper extends SelectMonkey
 {
-    
+    GreenfootImage image;
+    public SelectSuper(){
+        image = new GreenfootImage("Super Monkey.png");
+        image.scale(image.getWidth(), image.getHeight());
+        image.rotate(180);
+        setImage(image);
+    }
     
     public void act()
     {

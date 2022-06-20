@@ -51,6 +51,8 @@ public abstract class Monkeys extends Actor
                 shootBomb();
             }else if (type == "SniperMonkey"){
                 shootSniper();
+            }else if(type == "SuperMonkey"){
+                shootDart();
             }
         } else if(balloon.isEmpty()){
         }
