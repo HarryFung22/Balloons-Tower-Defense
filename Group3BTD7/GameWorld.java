@@ -126,6 +126,10 @@ public class GameWorld extends World
             addObject(playButton, 25, 125);
         }
         
+        if(userHP <=0){
+            Greenfoot.setWorld(new GameOverWorld());
+        }
+        
     }
 
     private void pathMap(){
