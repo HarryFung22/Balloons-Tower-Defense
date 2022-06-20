@@ -8,12 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SuperMonkey extends Monkeys
 {
-    /**
-     * Act - do whatever the SuperMonkey wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage image;
+    public SuperMonkey(){
+        image = new GreenfootImage("Super Monkey.png");
+        image.scale(image.getWidth(), image.getHeight());
+        setImage(image);
+        level = 0;
+        attackSpeed = 20;
+        cost = 600;
+        type = "superMonkey";
+        name = "Super Monkey";
+        upgradeCost = cost * 2;
+        sellCost = cost / 2;
+    }
     public void act()
     {
-        // Add your action code here.
+        findBalloon("SuperMonkey");
     }
 }
