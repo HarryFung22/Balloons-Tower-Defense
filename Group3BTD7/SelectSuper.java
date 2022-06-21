@@ -11,7 +11,7 @@ public class SelectSuper extends SelectMonkey
     GreenfootImage image;
     public SelectSuper(){
         image = new GreenfootImage("Super Monkey.png");
-        image.scale(image.getWidth(), image.getHeight());
+        image.scale(image.getWidth()-10, image.getHeight()-10);
         image.rotate(180);
         setImage(image);
     }

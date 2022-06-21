@@ -44,15 +44,15 @@ public class GameWorld extends World
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
 
     private PlayButton playButton;
-
+    //These are all texts within the game that will display onto the UI.
     Label healthTitle = new Label("Health: " + userHP, 40);
     Label moneyTitle = new Label("Money: " + userMoney, 40);
     Label waveTitle = new Label("Wave: " + wave, 40);
     Label scoreTitle = new Label("Score: " + score, 40);
-    Label sniperPrice = new Label("$300|", 25);
-    Label dartPrice = new Label("$200|", 25);
-    Label bombPrice = new Label("$400|", 25);
-    Label superPrice = new Label("$600|", 25);
+    Label sniperPrice = new Label("$300", 24);
+    Label dartPrice = new Label("$200", 24);
+    Label bombPrice = new Label("$400", 24);
+    Label superPrice = new Label("$600", 24);
 
     Label towerName = new Label("", 30);
     Label towerAttackSpeed = new Label("", 30);
@@ -87,10 +87,10 @@ public class GameWorld extends World
         SelectSuper selectSuperMonkey = new SelectSuper();
 
         //Add the objects and interactable buttons into the UI
-        addObject(selectDartMonkey, 25, 525);
-        addObject(selectCannon, 25, 575);
-        addObject(selectSniperMonkey, 75, 525);
-        addObject(selectSuperMonkey, 75, 575);
+        addObject(selectDartMonkey, 25, 485);
+        addObject(selectCannon, 25, 555);
+        addObject(selectSniperMonkey, 100, 485);
+        addObject(selectSuperMonkey, 100, 555);
 
         userHP = 100;
         healthTitle.setFillColor(Color.RED);
@@ -105,13 +105,13 @@ public class GameWorld extends World
         addObject(scoreTitle, 650, 125);
         
         sniperPrice.setFillColor(Color.WHITE);
-        addObject(sniperPrice, 25,75); 
+        addObject(sniperPrice, 100,520); 
         dartPrice.setFillColor(Color.WHITE);
-        addObject(dartPrice, 75,75); 
+        addObject(dartPrice, 25,520); 
         bombPrice.setFillColor(Color.WHITE);
-        addObject(bombPrice, 125,75); 
+        addObject(bombPrice, 25,585); 
         superPrice.setFillColor(Color.WHITE);
-        addObject(superPrice, 175,75); 
+        addObject(superPrice, 100,585); 
 
         waveTitle.setFillColor(Color.WHITE);
         addObject(waveTitle, 125, 125);
