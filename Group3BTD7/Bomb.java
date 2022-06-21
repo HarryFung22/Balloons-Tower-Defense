@@ -8,7 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bomb extends ParentDart
 {
+    GreenfootImage image;
     public Bomb(){
+        image = new GreenfootImage("Bomb.png");
+        image.scale(image.getWidth()/60, image.getHeight()/60);
+        image.mirrorHorizontally();
+        image.rotate(180);
+        setImage(image);
         projSpeed = 20;
         damage = 10;
     }

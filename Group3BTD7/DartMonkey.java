@@ -17,7 +17,7 @@ public class DartMonkey extends Monkeys
         image.rotate(90);
         setImage(image);
         cost = 200;
-        attackSpeed = 40;
+        attackSpeed = 60;
         type = "dartMonkey";
         name = "Dart Monkey";
         level = 0;
