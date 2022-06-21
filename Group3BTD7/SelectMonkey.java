@@ -28,6 +28,11 @@ public abstract class SelectMonkey extends Actor
             pickY = m.getY();
             getWorld().addObject(select, pickX, pickY);
         }
+        
+        if(Greenfoot.mouseClicked(this) && pressed == true && s.size() > 0){
+            getWorld().removeObject(select);
+            pressed = false;
+        }
 
         if(pressed == true && Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() == null){
             MouseInfo m = Greenfoot.getMouseInfo();
