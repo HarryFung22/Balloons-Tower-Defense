@@ -27,5 +27,6 @@ public class DartMonkey extends Monkeys
     }
     public void act(){
         findBalloon("DartMonkey");
+        super.act();
     }
 }

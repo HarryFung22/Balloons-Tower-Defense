@@ -8,15 +8,15 @@ import java.util.ArrayList;
  */
 public abstract class Monkeys extends Actor
 {
-    protected int fireRate, attackSpeed, cost, level, upgradeCost, sellCost;
+    int fireRate, attackSpeed, cost, level, upgradeCost, sellCost;
 
-    protected boolean isBought = false;
+    boolean isBought = false;
 
-    protected String type, name, title;
-
-    protected Balloon targetBalloon;
-    protected CamoBalloon targetCamoBalloon;
-    protected MetalBalloon targetMetalBalloon;
+    String type, name, title;
+    
+    Balloon targetBalloon;
+    CamoBalloon targetCamoBalloon;
+    MetalBalloon targetMetalBalloon;
 
     MouseInfo mouse = Greenfoot.getMouseInfo();
     
@@ -37,19 +37,17 @@ public abstract class Monkeys extends Actor
         Square s = (Square)getOneIntersectingObject(Square.class);
         SelectMonkey sel = (SelectMonkey)getOneIntersectingObject(SelectMonkey.class);
         Monkeys m = (Monkeys)getOneIntersectingObject(Monkeys.class);
-        if(!Greenfoot.mouseClicked(this) && p == null && s == null && sel == null && m == null){
+        if(!Greenfoot.mouseClicked(this)){
             balance = ((GameWorld)getWorld()).getMoney();
             
-            if(!isBought){
-                buyTower(cost);
+            if(isBought == false){
                 isBought = true;
-                setLocation((mouse.getX() / 50) * 50 + 25, (mouse.getY() / 50) * 50 + 25);
+                buyTower(cost);
             }
-        } else if(m != null){
-            getWorld().removeObject(m);
-        }else if(isBought == true && Greenfoot.mouseClicked(this) && stats == false){
-            if(((GameWorld)getWorld()).getStatOpen() == true){
-                stats = false;
+        } else if(isBought == true && Greenfoot.mouseClicked(this) && stats == false){
+            if(((GameWorld)getWorld()).getStatOpen() == false){
+                title = (name + " lvl." + level);
+                stats = true;
                 ((GameWorld)getWorld()).menu(title, 0, 0, stats, upgradeCost, sellCost, getX(), getY());
             }
         }else if(isBought == true && Greenfoot.mouseClicked(this) && stats == true){
@@ -57,8 +55,6 @@ public abstract class Monkeys extends Actor
                 stats = false;
                 ((GameWorld)getWorld()).menu(title, 0, 0, stats, upgradeCost, sellCost,getX(), getY());
             }
-        }else{
-            getWorld().removeObject(this);
         }
         
         if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost >= 0){
@@ -86,6 +82,7 @@ public abstract class Monkeys extends Actor
     }
 
     protected void findBalloon(String type){
+        fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
 
@@ -116,6 +113,7 @@ public abstract class Monkeys extends Actor
     }
 
     protected void findCamo(){
+        fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
 
@@ -138,6 +136,7 @@ public abstract class Monkeys extends Actor
     }
 
     protected void findMetal(){
+        fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
 
@@ -160,7 +159,6 @@ public abstract class Monkeys extends Actor
     }
 
     protected void shootDart(){
-        fireRate++;
         if(fireRate > attackSpeed){
                 Dart d = new Dart();
                 getWorld().addObject(d, getX(), getY());
@@ -172,7 +170,6 @@ public abstract class Monkeys extends Actor
     protected void shootBomb(){
         ArrayList<MetalBalloon> mBalloon = (ArrayList<MetalBalloon>)getWorld().getObjects(MetalBalloon.class);
         
-        fireRate++;
         if(fireRate > attackSpeed){
                 Bomb b = new Bomb();
                 getWorld().addObject(b, getX(), getY());
@@ -188,7 +185,6 @@ public abstract class Monkeys extends Actor
     protected void shootSniper(){
         ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
         
-        fireRate++;
         if(fireRate > attackSpeed){
                 SniperDart s = new SniperDart();
                 getWorld().addObject(s, getX(), getY());

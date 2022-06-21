@@ -10,11 +10,7 @@ public class Selected extends Actor
 {
     public Selected(){
         GreenfootImage image = getImage();
-        image.scale(image.getWidth() / 4, image.getHeight() / 4);
+        image.scale(image.getWidth(), image.getHeight());
         setImage(image);
-    }
-    public void act()
-    {
-        
     }
 }

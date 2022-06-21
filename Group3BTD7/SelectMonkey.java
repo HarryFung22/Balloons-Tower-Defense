@@ -33,7 +33,7 @@ public abstract class SelectMonkey extends Actor
             MouseInfo m = Greenfoot.getMouseInfo();
             if(tower == "Cannon" && balance - 400 >= 0){
                 getWorld().addObject(new Cannon(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(400);
+                
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
             }else{
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
@@ -41,7 +41,7 @@ public abstract class SelectMonkey extends Actor
             
             if(tower ==  "DartMonkey" && balance - 200 >= 0){
                 getWorld().addObject(new DartMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(200);
+                
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
             } else{
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
@@ -49,7 +49,7 @@ public abstract class SelectMonkey extends Actor
             
             if(tower == "SniperMonkey" && balance - 300 >= 0){
                 getWorld().addObject(new SniperMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(300);
+                
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
             } else{
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
@@ -57,7 +57,7 @@ public abstract class SelectMonkey extends Actor
             
             if(tower == "SuperMonkey" && balance - 600 >= 0){
                 getWorld().addObject(new SuperMonkey(), m.getX(), m.getY());
-                ((GameWorld)getWorld()).setMoney(600);
+                
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
             } else{
                 getWorld().removeObjects(getWorld().getObjects(Selected.class));
