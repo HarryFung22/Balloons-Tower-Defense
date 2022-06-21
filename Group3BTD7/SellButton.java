@@ -8,10 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SellButton extends Button
 {
-    /**
-     * Act - do whatever the SellButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage image;
+    public SellButton(){
+        image = new GreenfootImage("Sell Button.png");
+        image.scale(image.getWidth()/36, image.getHeight()/36);
+        setImage(image);
+    }
+    
     public void act()
     {
         // Add your action code here.

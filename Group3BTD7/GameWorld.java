@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
 /**
- * Write a description of class GameWorld here.
+ * This is the world where the game is played. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harry F, Aiden S, Nick S
+ * @version June 21, 2022
  */
 public class GameWorld extends World
 {
@@ -95,15 +95,15 @@ public class GameWorld extends World
 
         userHP = 100;
         healthTitle.setFillColor(Color.RED);
-        addObject(healthTitle, 680, 25);
+        addObject(healthTitle, 680, 480);
 
         userMoney = 500;
         moneyTitle.setFillColor(Color.GREEN);
-        addObject(moneyTitle, 680, 75);
+        addObject(moneyTitle, 680, 520);
 
         score = 0;
         scoreTitle.setFillColor(Color.WHITE);
-        addObject(scoreTitle, 650, 125);
+        addObject(scoreTitle, 680, 560);
         
         sniperPrice.setFillColor(Color.WHITE);
         addObject(sniperPrice, 100,520); 
