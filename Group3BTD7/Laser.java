@@ -1,23 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SniperDart here.
+ * Write a description of class Laser here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SniperDart extends ParentDart
+public class Laser extends ParentDart
 {
     GreenfootImage image;
-    public SniperDart(){
-        image = new GreenfootImage("Dart.png");
-        image.scale(image.getWidth()/20, image.getHeight()/20);
-        image.rotate(8);
+    public Laser(){
+        image = new GreenfootImage("Laser.png");
+        image.scale(image.getWidth()/2, image.getHeight()/2);
+        image.rotate(90);
         setImage(image);
-        projSpeed = 100;
+        projSpeed = 20;
         damage = 2;
     }
-
     public void act()
     {
         fire();

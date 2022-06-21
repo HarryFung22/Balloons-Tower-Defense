@@ -76,7 +76,7 @@ public class GameWorld extends World
         super(800, 600, 1); 
 
         moreDifficult = 1;
-
+        
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
         pathMap();
