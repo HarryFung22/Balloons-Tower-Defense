@@ -42,6 +42,16 @@ public abstract class Balloons extends Actor
         }catch (Exception e){
             
         }
+        
+        try{
+            Laser laser = (Laser)getOneIntersectingObject(Laser.class);
+            if(laser != null){
+                health = health - laser.getDamage();
+                getWorld().removeObject(laser);
+            }
+        }catch (Exception e){
+            
+        }
     }
     
     public void onPath(){

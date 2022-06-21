@@ -17,6 +17,7 @@ public class Dart extends ParentDart
         projSpeed = 40;
         damage = 1;
     }
+
     public void act()
     {
         fire();
