@@ -8,10 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class UpgradeButton extends Button
 {
-    /**
-     * Act - do whatever the UpgradeButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage image;
+    
+    public UpgradeButton(){
+        image = new GreenfootImage("Upgrade Button.png");
+        image.scale(image.getWidth()/22, image.getHeight()/22);
+        setImage(image);
+    }
+    
     public void act()
     {
         // Add your action code here.

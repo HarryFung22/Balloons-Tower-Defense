@@ -14,7 +14,8 @@ public class SniperMonkey extends Monkeys
     public SniperMonkey(){
         image = new GreenfootImage("Sniper Monkey.png");
         image.scale(image.getWidth()/3, image.getHeight()/3);
-        image.rotate(180);
+        image.mirrorHorizontally();
+        image.mirrorVertically();
         setImage(image);
         type = "sniperMonkey";
         name = "Sniper Monkey";
