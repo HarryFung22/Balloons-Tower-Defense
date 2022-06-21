@@ -16,7 +16,7 @@ public class Bomb extends ParentDart
         image.rotate(180);
         setImage(image);
         projSpeed = 20;
-        damage = 10;
+        damage = 5;
     }
     public void act()
     {

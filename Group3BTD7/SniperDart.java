@@ -14,8 +14,8 @@ public class SniperDart extends ParentDart
         image.scale(image.getWidth()/20, image.getHeight()/20);
         image.rotate(8);
         setImage(image);
-        projSpeed = 100;
-        damage = 2;
+        projSpeed = 60;
+        damage = 5;
     }
 
     public void act()

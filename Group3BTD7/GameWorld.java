@@ -65,7 +65,7 @@ public class GameWorld extends World
     Label sellPriceTitle = new Label("",30);
     SellButton sellButton = new SellButton();
 
-    Selected circle = new Selected();
+    Chosen circle = new  Chosen();
     /**
      * Constructor for objects of class GameWorld.
      * 
