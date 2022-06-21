@@ -35,6 +35,7 @@ public class GameWorld extends World
     private int moreDifficult;
     private int spawn;
     private boolean start;
+    private boolean turnedOn;
 
     private boolean upgraded = false;
     private boolean sold = false;
@@ -206,6 +207,7 @@ public class GameWorld extends World
     }
 
     public void menu(String displayName, int attackspeed, int range, boolean on, int upgradeCost, int sellPrice, int towerX, int towerY){
+        turnedOn = on;
         if(on){
             //List out all labels and titles to show information to user
             towerName.setValue(displayName);
@@ -215,13 +217,13 @@ public class GameWorld extends World
             sellPriceTitle.setValue("Sell: $" + sellPrice);
             
             //Add those labels into the tower menu interface 
-            addObject(towerName, 300, 20);
-            addObject(towerAttackSpeed, 300, 45);
-            addObject(towerRange, 300, 65);
-            addObject(upgradeCostTitle, 500, 20);
-            addObject(sellPriceTitle, 500, 45);
-            addObject(upgradeButton, 480, 75);
-            addObject(sellButton, 520, 75);
+            addObject(towerName, 260, 470);
+            addObject(towerAttackSpeed, 260, 500);
+            addObject(towerRange, 260, 530);
+            addObject(upgradeCostTitle, 460, 470);
+            addObject(sellPriceTitle, 460, 500);
+            addObject(upgradeButton, 430, 530);
+            addObject(sellButton, 480, 530);
             
             //Add a green circle to show the user which tower they have selected
             addObject(circle, towerX, towerY);
@@ -272,6 +274,10 @@ public class GameWorld extends World
                 }
             }
         }
+    }
+    
+    public boolean isOn(){
+        return turnedOn;
     }
     
     public boolean getUpgraded(){

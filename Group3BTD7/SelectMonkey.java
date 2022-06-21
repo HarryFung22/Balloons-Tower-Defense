@@ -30,8 +30,7 @@ public abstract class SelectMonkey extends Actor
         }
         
         if(Greenfoot.mouseClicked(this) && pressed == true && s.size() > 0){
-            getWorld().removeObject(select);
-            pressed = false;
+             getWorld().removeObjects(getWorld().getObjects(Selected.class));
         }
 
         if(pressed == true && Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() == null){
