@@ -20,7 +20,7 @@ public class SniperMonkey extends Monkeys
         type = "sniperMonkey";
         name = "Sniper Monkey";
         cost = 300;
-        attackSpeed = 80;
+        attackSpeed = 100;
         level = 0;
         upgradeCost = cost * 2;
         sellCost = cost / 2;
