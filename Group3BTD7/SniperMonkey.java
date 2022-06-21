@@ -28,5 +28,6 @@ public class SniperMonkey extends Monkeys
         }else{
             findBalloon("SniperMonkey");
         }
+        super.act();
     }
 }

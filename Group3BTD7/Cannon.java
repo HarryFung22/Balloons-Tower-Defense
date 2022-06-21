@@ -32,6 +32,7 @@ public class Cannon extends Monkeys
         }else{
             findBalloon("Cannon");
         }
+        super.act();
     }
     
 }

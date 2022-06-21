@@ -24,5 +24,6 @@ public class SuperMonkey extends Monkeys
     public void act()
     {
         findBalloon("SuperMonkey");
+        super.act();
     }
 }

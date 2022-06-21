@@ -124,10 +124,6 @@ public class GameWorld extends World
     }
 
     public void act(){
-        healthTitle.setValue("Health: " + userHP);
-        moneyTitle.setValue("Money: " + userMoney);
-        waveTitle.setValue("Wave: " + wave);
-        scoreTitle.setValue("Score: " + score);
         if(Greenfoot.mousePressed(playButton)){
             start = true;
 
@@ -155,10 +151,22 @@ public class GameWorld extends World
             start = false;
             addObject(playButton, 25, 125);
         }
-
+        
+        if(Greenfoot.mouseClicked(upgradeButton)){
+            upgraded = true;
+        }else if(Greenfoot.mouseClicked(sellButton)){
+            sold = true;
+        }
+        
+        healthTitle.setValue("Health: " + userHP);
+        
         if(userHP <=0){
             Greenfoot.setWorld(new GameOverWorld());
         }
+        
+        moneyTitle.setValue("Money: " + userMoney);
+        waveTitle.setValue("Wave: " + wave);
+        scoreTitle.setValue("Score: " + score);
 
     }
 
