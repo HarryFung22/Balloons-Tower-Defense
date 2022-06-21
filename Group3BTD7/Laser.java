@@ -15,7 +15,7 @@ public class Laser extends ParentDart
         image.rotate(90);
         setImage(image);
         projSpeed = 20;
-        damage = 2;
+        damage = 1;
     }
     public void act()
     {

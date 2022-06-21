@@ -17,6 +17,7 @@ public abstract class SelectMonkey extends Actor
         int balance = ((GameWorld)getWorld()).getMoney();
         Selected select = new Selected();
         
+        Monkeys monkey = (Monkeys)getOneIntersectingObject(Monkeys.class);
         if(s.size() <= 0){
             pressed = false;
         }
