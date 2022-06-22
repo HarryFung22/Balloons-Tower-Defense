@@ -22,7 +22,16 @@ public class StartWorld extends World
         super(800, 600, 1);
         background.scale(800,600);
         setBackground(background);
-        displayText = "Welcome Player";
+        if(UserInfo.isStorageAvailable()){
+            userInfo = UserInfo.getMyInfo();
+            if(userInfo != null){
+                displayText = "Welcome " + userInfo.getUserName();
+            } else{
+                displayText = "Welcome player, please login to save your scores!";
+            }
+        } else{
+            displayText = "Note: Storage is full.";
+        }
         welcomeText = new GreenfootImage(displayText, 24, Color.WHITE,null);
         getBackground().drawImage(welcomeText, 335, 400);
     }
@@ -30,8 +39,7 @@ public class StartWorld extends World
     public void act(){
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new GameWorld());
-        }
-        if(Greenfoot.isKeyDown("i")){
+        }else if(Greenfoot.isKeyDown("i")){
             Greenfoot.setWorld(new InstructionWorld());
         }
     }
