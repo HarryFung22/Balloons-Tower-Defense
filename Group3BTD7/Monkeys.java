@@ -176,7 +176,7 @@ public abstract class Monkeys extends Actor
             fireRate = 0;
         }
     }
-    
+
     protected void shootLaser(){
         if(fireRate > attackSpeed){
             Laser l = new Laser();

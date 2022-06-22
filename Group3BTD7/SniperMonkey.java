@@ -12,8 +12,8 @@ public class SniperMonkey extends Monkeys
     boolean isBought = false;
     GreenfootImage image;
     public SniperMonkey(){
-        image = new GreenfootImage("Sniper Monkey.png");
-        image.scale(image.getWidth()/3, image.getHeight()/3);
+        image = new GreenfootImage("Sniper Monkey Box Hitbox.png");
+        image.scale(image.getWidth()/6, image.getHeight()/6);
         image.mirrorHorizontally();
         image.mirrorVertically();
         setImage(image);
