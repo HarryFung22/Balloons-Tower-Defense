@@ -10,7 +10,7 @@ import java.util.ListIterator;
  */
 public class GameWorld extends World
 {
-
+    //Map layout - how are the balloons going to follow the path and what path they will take
     int map [][] = {
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -34,6 +34,7 @@ public class GameWorld extends World
     private int timeBetweenWaves;
     private int moreDifficult;
     private int spawn;
+    private int highscore;
     private boolean start;
     private boolean turnedOn;
 
@@ -45,6 +46,7 @@ public class GameWorld extends World
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
 
     private PlayButton playButton;
+    private UserInfo user;
     //These are all texts within the game that will display onto the UI.
     Label healthTitle = new Label("Health: " + userHP, 40);
     Label moneyTitle = new Label("Money: " + userMoney, 40);
@@ -162,13 +164,25 @@ public class GameWorld extends World
         healthTitle.setValue("Health: " + userHP);
         
         if(userHP <=0){
-            Greenfoot.setWorld(new GameOverWorld());
+            Greenfoot.setWorld(new GameOver());
         }
         
         moneyTitle.setValue("Money: " + userMoney);
         waveTitle.setValue("Wave: " + wave);
         scoreTitle.setValue("Score: " + score);
-
+        
+        //For the scoreboard - checking login to see if the score can be updated
+        if (UserInfo.isStorageAvailable()) { 
+            user = UserInfo.getMyInfo();
+        }
+        if (score > highscore){
+            highscore = score;
+        }
+        //Sets the score and pushes it into the server
+        if (user != null){
+            user.setScore(highscore);
+            user.store();
+        }
     }
 
     private void pathMap(){
