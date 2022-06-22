@@ -116,7 +116,7 @@ public abstract class Monkeys extends Actor
             }else if (type == "SniperMonkey"){
                 shootSniper();
             }else if(type == "SuperMonkey"){
-                shootDart();
+                shootLaser();
             }
         } else if(balloon.isEmpty()){
         }
@@ -173,6 +173,15 @@ public abstract class Monkeys extends Actor
             Dart d = new Dart();
             getWorld().addObject(d, getX(), getY());
             d.turnTowards(targetBalloon.getX(), targetBalloon.getY());
+            fireRate = 0;
+        }
+    }
+    
+    protected void shootLaser(){
+        if(fireRate > attackSpeed){
+            Laser l = new Laser();
+            getWorld().addObject(l, getX(), getY());
+            l.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             fireRate = 0;
         }
     }

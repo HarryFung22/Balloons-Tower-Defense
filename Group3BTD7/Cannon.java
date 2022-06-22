@@ -17,7 +17,7 @@ public class Cannon extends Monkeys
         image.rotate(180);
         setImage(image);
         level = 0;
-        attackSpeed = 60;
+        attackSpeed = 80;
         cost = 400;
         type = "cannonTower";
         name = "Cannon";

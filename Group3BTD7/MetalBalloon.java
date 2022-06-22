@@ -14,7 +14,7 @@ public class MetalBalloon extends Balloons
         health = 10;
         speed = 1;
         image = getImage();
-        image.scale(50,50);
+        image.scale(image.getWidth()/2 + 10,image.getHeight()/2 + 10);
         setImage(image);
     }
     public void act()

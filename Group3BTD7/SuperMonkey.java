@@ -14,7 +14,7 @@ public class SuperMonkey extends Monkeys
         image.scale(image.getWidth(), image.getHeight());
         setImage(image);
         level = 0;
-        attackSpeed = 20;
+        attackSpeed = 40;
         cost = 600;
         type = "superMonkey";
         name = "Super Monkey";
