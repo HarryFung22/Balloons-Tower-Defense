@@ -4,6 +4,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * This is the start world, where the player can navigate our main menu.
  * Players can start the world or check the instructions on how to play.
  * 
+ * <p> Game Music: https://www.youtube.com/watch?v=edwooGpMg8g
+ * 
  * @author Aiden S
  * @version June 7, 2022
  */
@@ -14,7 +16,7 @@ public class StartWorld extends World
     private String displayText;
     private GreenfootImage welcomeText;
 
-    //Probably going to add some kind of background music
+    GreenfootSound main = new GreenfootSound("Intro.wav");
 
     //Constructor for the StartWorld
     public StartWorld()
@@ -40,9 +42,14 @@ public class StartWorld extends World
      * Checks for user input
      */
     public void act(){
+        //plays the intro background music
+        main.setVolume(20);
+        main.playLoop();
         if(Greenfoot.isKeyDown("space")){
+            main.stop();
             Greenfoot.setWorld(new GameWorld());
         }else if(Greenfoot.isKeyDown("i")){
+            main.stop();
             Greenfoot.setWorld(new InstructionWorld());
         }
     }

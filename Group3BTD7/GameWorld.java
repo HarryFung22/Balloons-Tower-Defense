@@ -42,6 +42,7 @@ import java.util.ListIterator;
  * occured before but we have check before submitting that the name of the png should be
  * correct)
  * 
+ * <p> Game Music: https://www.youtube.com/watch?v=K-4SthopN2U
  * @author Harry F, Aiden S, Nick S
  * @version June 23, 2022
  */
@@ -110,6 +111,9 @@ public class GameWorld extends World
     SellButton sellButton = new SellButton();
 
     Chosen circle = new  Chosen();
+    
+    //background sound
+    GreenfootSound BGM = new GreenfootSound("BGM.wav");
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -119,6 +123,9 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
 
+        BGM.setVolume(30);
+        BGM.playLoop();
+        
         //indicated difficulty for the balloon, 1 indicates normal balloons
         moreDifficult = 1;
 
@@ -227,6 +234,8 @@ public class GameWorld extends World
         healthTitle.setValue("Health: " + userHP);
 
         if(userHP <=0){
+            //stops the music and swaps world
+            BGM.stop();
             Greenfoot.setWorld(new GameOver());
         }
 

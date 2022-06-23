@@ -4,6 +4,13 @@ import java.util.ArrayList;
  * This is the superclass for all monkeys
  * Helps differentiate between tower types, by adjusting their individual properties
  * 
+ * <p> Dart Sound (Dart Sound effect HD): https://www.youtube.com/watch?v=pS7uyUNmQ08
+ * <p> Bomb Sound (Force push sound): https://www.youtube.com/watch?v=mvtBFHT8fWY
+ * <p> Sniper Sound (BOCW LW3 Tundra Sound): https://www.youtube.com/watch?v=P2Yi0vfA2ZQ
+ * <p> Laser Sound (Laser gun sound effect): https://www.youtube.com/shorts/FsLkXXOyeRI
+ * <p> Upgrade sound (Clash of Clans Elixir collect sound): https://www.youtube.com/watch?v=pjEfqcqnq_4 
+ * <p> Sell sound (Tower Defense Simulator upgrade sound (roblox)): https://www.youtube.com/watch?v=1zK9yj6QY8A
+ * 
  * @author Harry F, Aiden S 
  * @version June 23 2022
  */
@@ -35,6 +42,16 @@ public abstract class Monkeys extends Actor
 
     //Variable used to set the user's money
     int balance;
+
+    //projectile sounds
+    GreenfootSound Dart = new GreenfootSound("Dart Sound.wav");
+    GreenfootSound Bomb = new GreenfootSound("Bomb Sound.wav");
+    GreenfootSound Sniper = new GreenfootSound("Sniper Sound.wav");
+    GreenfootSound Laser = new GreenfootSound("Laser Sound.wav");
+
+    //upgrade and sell sounds
+    GreenfootSound upgrade = new GreenfootSound("Upgrade.wav");
+    GreenfootSound Sold = new GreenfootSound("Sold.wav");
 
     /**
      * This is the act method which will be used for interactions between the monkey and 
@@ -78,6 +95,8 @@ public abstract class Monkeys extends Actor
         if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost >= 0){
             //if the tower isn't level 5
             if(level <= 4){
+                //upgrade sound effect
+                upgrade.play();
                 //updates tower level
                 level++;
                 title = (name + " lvl." + level);
@@ -119,6 +138,8 @@ public abstract class Monkeys extends Actor
 
         //if the user wants to sell the tower
         if(stats && ((GameWorld)getWorld()).getSold() == true){
+            //play sell sound effect
+            Sold.play();
             //turns off the tower menu
             stats = false;
             ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(), stats, upgradeCost, sellCost, getX(), getY());
@@ -231,6 +252,8 @@ public abstract class Monkeys extends Actor
             getWorld().addObject(d, getX(), getY());
             d.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             fireRate = 0;
+            Dart.setVolume(85);
+            Dart.play();
         }
     }
 
@@ -243,6 +266,8 @@ public abstract class Monkeys extends Actor
             getWorld().addObject(l, getX(), getY());
             l.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             fireRate = 0;
+            Laser.setVolume(90);
+            Laser.play();
         }
     }
 
@@ -263,6 +288,8 @@ public abstract class Monkeys extends Actor
                 b.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             }
             fireRate = 0;
+            Bomb.setVolume(80);
+            Bomb.play();
         }
     }
 
@@ -283,6 +310,8 @@ public abstract class Monkeys extends Actor
                 s.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             }
             fireRate = 0;
+            Sniper.setVolume(90);
+            Sniper.play();
         }
     }
 
