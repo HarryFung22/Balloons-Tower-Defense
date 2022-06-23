@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=ParentDart
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Dart\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Superclass\ for\ all\ darts/projectiles.\r\n\ Each\ tower\ shoots\ a\ different\ type\ of\ projectile\ which\ have\ different\ stats,\ etc\r\n\ \r\n\ @author\ Nick\ S\r\n\ @version\ june\ 23\ 2022\r\n
 comment1.params=
 comment1.target=int\ getDamage()
 comment1.text=\r\n\ Accessor\ that\ returns\ the\ current\ damage\ of\ the\ projectile\r\n
 comment2.params=
 comment2.target=void\ fire()
+comment2.text=\r\n\ Method\ to\ mvoe\ the\ projectile\ depending\ on\ its\ speed\r\n
 numComments=3

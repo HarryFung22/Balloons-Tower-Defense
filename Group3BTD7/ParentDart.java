@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Dart here.
+ * Superclass for all darts/projectiles.
+ * Each tower shoots a different type of projectile which have different stats, etc
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Nick S
+ * @version june 23 2022
  */
 public abstract class ParentDart extends Actor
 {
@@ -18,6 +19,9 @@ public abstract class ParentDart extends Actor
         return damage;
     }
     
+    /**
+     * Method to mvoe the projectile depending on its speed
+     */
     public void fire(){
         move(projSpeed);
         if(isAtEdge()){

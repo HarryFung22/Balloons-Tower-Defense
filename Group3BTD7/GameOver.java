@@ -26,8 +26,8 @@ public class GameOver extends World
     
     public void act()
     {
-        //Send player to another game if the enter key is pressed
-        if (Greenfoot.isKeyDown("enter")){
+        //Send player to another game if the space key is pressed
+        if (Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new GameWorld());
         } 
         //Otherwise, pressing the r key will return them back to the start

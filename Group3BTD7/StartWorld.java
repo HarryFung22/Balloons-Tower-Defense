@@ -36,6 +36,9 @@ public class StartWorld extends World
         getBackground().drawImage(welcomeText, 335, 400);
     }
 
+    /**
+     * Checks for user input
+     */
     public void act(){
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new GameWorld());

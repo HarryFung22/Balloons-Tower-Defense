@@ -1,18 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Balloons here.
+ * This is the superclass for all balloons
+ * Objective is to reach the end of the path and turn the user's health to 0
+ * Monkeys will be used in order to attack and destroy these balloons
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Aiden S
+ * @version June 23 2022
  */
 public abstract class Balloons extends Actor
 {
+    //instances variables that each balloon type can set 
     int health, speed;
     boolean camo = false;
     boolean metal = false;
-    
+
+    /**
+     * Method used to check if a balloon is "hit" by its respective projectile, deducts its
+     * health if hit by the projectile
+     * Results vary for each type of projectile
+     */
     public void attacked(){
+        //Try catch blocks were used to potentially avoid bugs
+        //Checks to see if balloon is hit by a projectile
         try{
             Dart dart = (Dart)getOneIntersectingObject(Dart.class);
             if(dart != null){
@@ -20,9 +30,9 @@ public abstract class Balloons extends Actor
                 getWorld().removeObject(dart);
             }
         }catch (Exception e){
-            
+
         }
-        
+
         try{
             Bomb bomb = (Bomb)getOneIntersectingObject(Bomb.class);
             if(bomb != null){
@@ -30,9 +40,9 @@ public abstract class Balloons extends Actor
                 getWorld().removeObject(bomb);
             }
         }catch (Exception e){
-            
+
         }
-        
+
         try{
             SniperDart sDart = (SniperDart)getOneIntersectingObject(SniperDart.class);
             if(sDart != null){
@@ -40,9 +50,9 @@ public abstract class Balloons extends Actor
                 getWorld().removeObject(sDart);
             }
         }catch (Exception e){
-            
+
         }
-        
+
         try{
             Laser laser = (Laser)getOneIntersectingObject(Laser.class);
             if(laser != null){
@@ -50,10 +60,15 @@ public abstract class Balloons extends Actor
                 getWorld().removeObject(laser);
             }
         }catch (Exception e){
-            
+
         }
     }
-    
+
+    /**
+     * Method to make balloons react differently (rotate) depending on the path's number and
+     * properties
+     * Makes the balloon stay on the map's path
+     */
     public void onPath(){
         move(speed);
         List<Pathing> path90 = getObjectsAtOffset(-25,-25,  Pathing.class);
@@ -90,10 +105,16 @@ public abstract class Balloons extends Actor
         }
         removeMe();
     }
-    
+
+    /**
+     * Method to "despawn" balloons at the edge of the map
+     */
     public void removeMe(){
         if(isAtEdge()){
             getWorld().removeObject(this);
+
+            //updates the health of the base after a balloon reaches the end
+            //reduces health depending on that balloon's current health before it despawned
             ((GameWorld)getWorld()).setHealth(health);
         }
     }

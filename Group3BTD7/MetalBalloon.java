@@ -1,14 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MetalBalloon here.
+ * Heavy balloon, only bomb towers can detect and shoot them
+ * Not detectable from any other class.
+ * <p>Art: https://bloons.fandom.com/wiki/Lead_Bloon <p/>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Aiden S 
+ * @version June 23 2022
  */
 public class MetalBalloon extends Balloons
 {
     GreenfootImage image;
+    
+    /**
+     * Constructor for the metal balloon at it's properties
+     */
     public MetalBalloon(){
         metal = true;
         health = 10;
@@ -17,6 +23,11 @@ public class MetalBalloon extends Balloons
         image.scale(image.getWidth()/2 + 10,image.getHeight()/2 + 10);
         setImage(image);
     }
+
+    /**
+     * Act method which allows the balloons to interact with the world and acheive its goal 
+     * (reaching the end)
+     */
     public void act()
     {
         onPath();

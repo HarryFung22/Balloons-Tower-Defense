@@ -26,6 +26,7 @@ public class GameWorld extends World
             {6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6},
         };
 
+    //list of variables used to keep track of user's info
     private static int userHP;
     private static int userMoney;
     private static int score;
@@ -38,15 +39,19 @@ public class GameWorld extends World
     private boolean start;
     private boolean turnedOn;
 
+    //variables used to check if a tower is selected to be upgraded
     private boolean upgraded = false;
     private boolean sold = false;
     private boolean isClicked;
     private boolean statOpen;
 
+    //Arraylist used to set the order the balloons spawn 
     private ArrayList<Integer> balloonOrder = new ArrayList<Integer>();
 
+    //Button that is pressed in order for a wave to start
     private PlayButton playButton;
     private UserInfo user;
+
     //These are all texts within the game that will display onto the UI.
     Label healthTitle = new Label("Health: " + userHP, 40);
     Label moneyTitle = new Label("Money: " + userMoney, 40);
@@ -77,8 +82,10 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
 
+        //indicated difficulty for the balloon, 1 indicates normal balloons
         moreDifficult = 1;
-        
+
+        //setup the "play button"
         playButton = new PlayButton();
         addObject(playButton, 25, 125);
         pathMap();
@@ -95,6 +102,7 @@ public class GameWorld extends World
         addObject(selectSniperMonkey, 100, 485);
         addObject(selectSuperMonkey, 100, 555);
 
+        //Setting up UI such as user hp, money, selectable towers, etc
         userHP = 100;
         healthTitle.setFillColor(Color.RED);
         addObject(healthTitle, 680, 480);
@@ -106,7 +114,7 @@ public class GameWorld extends World
         score = 0;
         scoreTitle.setFillColor(Color.WHITE);
         addObject(scoreTitle, 680, 560);
-        
+
         sniperPrice.setFillColor(Color.WHITE);
         addObject(sniperPrice, 100,520); 
         dartPrice.setFillColor(Color.WHITE);
@@ -118,59 +126,77 @@ public class GameWorld extends World
 
         waveTitle.setFillColor(Color.WHITE);
         addObject(waveTitle, 125, 125);
-        
+
         upgradeCostTitle.setFillColor(Color.GREEN);
         sellPriceTitle.setFillColor(Color.RED);
-        
+
+        //setup the map
         start = false;
         statOpen = false;
     }
 
     public void act(){
+        //checks if a wave has started
         if(Greenfoot.mousePressed(playButton)){
+            //variable to start the wave
             start = true;
-
+            //removes the button
             removeObject(playButton);
 
+            //Code below is used to randomize the # of ballons per wave, types or balloons, etc
+            //Arraylist is used and the computer randomizes the amount of balloons per wave
+            //This is apparent as some waves may be short, while others are longer
             if(balloonsLeft == 0){
                 wave++;
+                //increases difficulty, header ballons spawn at these thresholds
                 if(wave == 5 || wave == 20){
                     moreDifficult++;
                 }
+                //randomizes balloon count
                 balloonsLeft = (Greenfoot.getRandomNumber(3) + 10) * wave;
 
+                //adds balloons to the arraylist, sets a spawning order
                 for(int i = 0; i < balloonsLeft; i++){
+                    //A balloon will be spawned depending on the user's progression
                     spawn = Greenfoot.getRandomNumber(moreDifficult);
+                    //Balloon gets added into the arraylist
                     balloonOrder.add(spawn);
                 }
             }
         }
 
+        //if user wants to start another wave even if there are still balloons left
         if(start && balloonsLeft > 0){
+            //spawns the balloons
             spawnBalloon();
         }
 
+        //checks if there are no balloons left in the arraylist and if the wave is greater than 0
         if(balloonsLeft == 0 && wave != 0){
+            //Doesn't start the next wave
             start = false;
+            //Adds back the play button
             addObject(playButton, 25, 125);
         }
-        
+
+        //if the user upgrades the tower (by clicking the upgrade button)
         if(Greenfoot.mouseClicked(upgradeButton)){
             upgraded = true;
-        }else if(Greenfoot.mouseClicked(sellButton)){
+        }//checks if the user has sold the tower
+        else if(Greenfoot.mouseClicked(sellButton)){
             sold = true;
         }
-        
+        //updates current hp
         healthTitle.setValue("Health: " + userHP);
-        
+
         if(userHP <=0){
             Greenfoot.setWorld(new GameOver());
         }
-        
+
         moneyTitle.setValue("Money: " + userMoney);
         waveTitle.setValue("Wave: " + wave);
         scoreTitle.setValue("Score: " + score);
-        
+
         //For the scoreboard - checking login to see if the score can be updated
         if (UserInfo.isStorageAvailable()) { 
             user = UserInfo.getMyInfo();
@@ -185,6 +211,10 @@ public class GameWorld extends World
         }
     }
 
+    /**
+     * Method used to setup pathing for balloons, used to indicate where balloons will need to
+     * rotate depending on the number that corresponds to that given "tile" in the 2d array
+     */
     private void pathMap(){
         for(int i = 0; i < 16; i++){
             for(int j = 0; j < 12; j++){
@@ -220,6 +250,9 @@ public class GameWorld extends World
         return (float)distance;
     }
 
+    /** 
+     * Method used to create an interface for the user to upgrade or select the tower depending on which tower has been selected
+     */
     public void menu(String displayName, int attackspeed, int range, boolean on, int upgradeCost, int sellPrice, int towerX, int towerY){
         turnedOn = on;
         if(on){
@@ -229,7 +262,7 @@ public class GameWorld extends World
             towerRange.setValue("Range: " + range);
             upgradeCostTitle.setValue("Upgrade: $" + upgradeCost); 
             sellPriceTitle.setValue("Sell: $" + sellPrice);
-            
+
             //Add those labels into the tower menu interface 
             addObject(towerName, 260, 470);
             addObject(towerAttackSpeed, 260, 500);
@@ -238,10 +271,10 @@ public class GameWorld extends World
             addObject(sellPriceTitle, 460, 500);
             addObject(upgradeButton, 430, 530);
             addObject(sellButton, 480, 530);
-            
+
             //Add a green circle to show the user which tower they have selected
             addObject(circle, towerX, towerY);
-            
+
             //Tell the computer that there is currently a tower menu open
             statOpen = true;
         }
@@ -251,36 +284,43 @@ public class GameWorld extends World
             towerName.setValue("");
             towerAttackSpeed.setValue("");
             towerRange.setValue("");
-            
+
             upgradeCostTitle.setValue("");
             removeObject(upgradeButton);
             sellPriceTitle.setValue("");
             removeObject(sellButton);
-            
+
             //Remove the green circle as the user is no longer selecting the respective tower's menu
             removeObject(circle);
-            
+
             //Tell the computer that there is no tower menu open anymore
             statOpen = false;
         }
     }
 
+    /**
+     * Method used to randomly spawn a variety of balloons
+     */
     private void spawnBalloon(){
+        //Randomizes the spawn rate
         timeBetweenWaves = Greenfoot.getRandomNumber(50);
         if(timeBetweenWaves == 1){
+            //spawns regular balloons
             if(balloonOrder.get(0) == 0){
                 addObject(new Balloon(), 0 , 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
                     balloonOrder.remove(0);
                 }
-            }else if(balloonOrder.get(0) == 1){
+            }//Spawns camo balloons
+            else if(balloonOrder.get(0) == 1){
                 addObject(new CamoBalloon(), 0, 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
                     balloonOrder.remove(0);
                 }
-            }else if(balloonOrder.get(0) == 2){
+            }//spawns metal balloons
+            else if(balloonOrder.get(0) == 2){
                 addObject(new MetalBalloon(), 0, 175);
                 balloonsLeft--;
                 if(balloonsLeft > 0){
@@ -289,51 +329,88 @@ public class GameWorld extends World
             }
         }
     }
-    
+
+    /**
+     * Getter Method that "indirectly" returns boolean value of whether the monkey's stats
+     * variable is on or not (in the menu method)
+     */
     public boolean isOn(){
         return turnedOn;
     }
-    
+
+    /**
+     * Getter Method that returns boolean value of whether a tower has been upgraded or not
+     */
     public boolean getUpgraded(){
         return upgraded;
     }
-    
+
+    /**
+     * Setter Method that sets the "upgraded" boolean variable
+     */
     public void setUpgraded(boolean b){
         upgraded = b;
     }
-    
+
+    /**
+     * Getter Method that returns boolean value of whether a tower has been sold or not
+     */
     public boolean getSold(){
         return sold;
     }
-    
+
+    /**
+     * Setter Method that sets the "sold" boolean variable
+     */
     public void setSold(boolean b){
         sold = b;
     }
 
+    /**
+     * Getter Method that returns boolean value of whether a tower menu is open
+     */
     public boolean getStatOpen(){
         return statOpen;
     }
 
+    /**
+     * Getter Method that returns an int value of the user's health
+     */
     public static int getHealth(){
         return userHP;
     }
 
+    /**
+     * Setter Method that sets the user's health 
+     */
     public static void setHealth(int num){
         userHP = userHP - num;
     }
 
+    /**
+     * Setter Method that sets the user's money after a purchase
+     */
     public static void setMoney(int cost){
         userMoney = userMoney - cost;
     }
 
+    /**
+     * Setter Method that adds money to the user's money
+     */
     public static void addMoney(int money){
         userMoney = userMoney + money;
     }
 
+    /**
+     * Getter Method that returns a int value of the user's money
+     */
     public static int getMoney(){
         return userMoney;
     }
 
+    /**
+     * Setter Method that sets the score variable
+     */
     public static void addScore(int points){
         score = score + points;
     }

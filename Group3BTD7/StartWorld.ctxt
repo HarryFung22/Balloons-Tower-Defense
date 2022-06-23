@@ -5,4 +5,5 @@ comment1.params=
 comment1.target=StartWorld()
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Checks\ for\ user\ input\r\n
 numComments=3

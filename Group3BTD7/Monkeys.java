@@ -1,43 +1,50 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Monkeys here.
+ * This is the superclass for all monkeys
+ * Helps differentiate between tower types, by adjusting their individual properties
  * 
- * @author Harry F 
- * @version (a version number or a date)
+ * @author Harry F, Aiden S 
+ * @version June 23 2022
  */
 public abstract class Monkeys extends Actor
 {
+    //instances variables that will be unique to every single monkey
     int fireRate, attackSpeed, cost, level, upgradeCost, sellCost;
 
+    //checks if the tower has been bought
     boolean isBought = false;
 
+    //strings to display monkey name, etc
     String type, name, title;
 
+    //used for the targeting system
     Balloon targetBalloon;
     CamoBalloon targetCamoBalloon;
     MetalBalloon targetMetalBalloon;
 
+    //variable that reads the mouse button
     MouseInfo mouse = Greenfoot.getMouseInfo();
 
+    //gets the range of each tower
     int balloonRange;
 
+    //Variable to check if the tower is opened
     boolean stats = false;
     boolean poor = false;
 
+    //Variable used to set the user's money
     int balance;
 
     /**
-     * Act - do whatever the Monkeys wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * This is the act method which will be used for interactions between the monkey and 
+     * the world
      */
     public void act()
     {
-        Pathing p = (Pathing)getOneIntersectingObject(Pathing.class);
-        Square s = (Square)getOneIntersectingObject(Square.class);
-        SelectMonkey sel = (SelectMonkey)getOneIntersectingObject(SelectMonkey.class);
-        Monkeys m = (Monkeys)getOneIntersectingObject(Monkeys.class);
         if(!Greenfoot.mouseClicked(this)){
+            //center the monkey into the closest 50x50 grid
+            //updates the user's money
             balance = ((GameWorld)getWorld()).getMoney();
 
             if(isBought == false){
@@ -45,53 +52,91 @@ public abstract class Monkeys extends Actor
                 isBought = true;
                 setLocation((mouse.getX() / 50) * 50 + 25, (mouse.getY() / 50) * 50 + 25);
             }
-        } else if(isBought == true && Greenfoot.mouseClicked(this) && stats == false){
+        } 
+        //If the user clicks on the tower and the menu is turned OFF
+        else if(isBought == true && Greenfoot.mouseClicked(this) && stats == false){
+            //Makes sure no other menus are turned on
             if(((GameWorld)getWorld()).getStatOpen() == false){
+                //display title
                 title = (name + " lvl." + level);
+                //Turns on the menu
                 stats = true;
                 ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(), stats, upgradeCost, sellCost, getX(), getY());
             }
-        }else if(isBought == true && Greenfoot.mouseClicked(this) && stats == true){
+        }
+        //If the user clicks on the green arrow and the menu is turned on
+        else if(isBought == true && Greenfoot.mouseClicked(this) && stats == true){
+            //checks if the menu was on
             if(((GameWorld)getWorld()).getStatOpen() == true){
+                //turns off the menu
                 stats = false;
                 ((GameWorld)getWorld()).menu(title, 0, 0, stats, upgradeCost, sellCost,getX(), getY());
             }
         }
 
+        //Checks if the user wants to upgrade the monkey
         if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost >= 0){
+            //if the tower isn't level 5
             if(level <= 4){
+                //updates tower level
                 level++;
                 title = (name + " lvl." + level);
+                //checks if the attackSpeed is above 1
                 if(attackSpeed > 1){
+                    //upgrades the attackSpeed (which is a delay)
+                    //lower delay = more rapid firing
                     attackSpeed = attackSpeed - 4;
                 }
 
+                //turns on the menu if tower is upgraded
                 stats = false;
 
+                //Updates the UI, calls the menu method from GameWorld to put stats onto Labels
                 ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(),stats, upgradeCost, sellCost, getX(), getY());
 
+                //Updates the user's money (reduces money since they just upgraded)
                 ((GameWorld)getWorld()).setMoney(upgradeCost);
+            }else if(level >= 5){
+                ((GameWorld)getWorld()).setUpgraded(false);
             }
+            //Turn off the request for upgrading in GameWorld
             ((GameWorld)getWorld()).setUpgraded(false);
-        }else if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost < 0) {
+        }
+
+        //if user doesn't have enough money to upgrade, closes menu
+        if(stats && ((GameWorld)getWorld()).getUpgraded() == true && balance - upgradeCost < 0) {
             stats = false;
 
             ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(),stats, upgradeCost, sellCost, getX(), getY());
         }
 
+        //sets the upgraded variable in GameWorld to false if menu is off
+        //used so that tower doesn't get auto placed once the user gets enough money
+        //(after they clicked the upgraded button)
         if(((GameWorld)getWorld()).isOn() == false){
             ((GameWorld)getWorld()).setUpgraded(false);
         }
+
+        //if the user wants to sell the tower
         if(stats && ((GameWorld)getWorld()).getSold() == true){
+            //turns off the tower menu
             stats = false;
             ((GameWorld)getWorld()).menu(title, attackSpeed, getRange(), stats, upgradeCost, sellCost, getX(), getY());
+            //Gives the user money back
             ((GameWorld)getWorld()).setMoney(-1 * sellCost);
+            //Turn off the selling request in GameWorld
             ((GameWorld)getWorld()).setSold(false);
+            //removes the tower
             getWorld().removeObject(this);
         }
     }
 
+    /**
+     * Method that detects the closest balloon, takes in a string as an input to differentiate
+     * which projectile should be fired by which tower (since all towers attack normal balloons)
+     */
     protected void findBalloon(String type){
+        //add delay
         fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
@@ -109,6 +154,7 @@ public abstract class Monkeys extends Actor
                 }
             }
             turnTowards(targetBalloon.getX(), targetBalloon.getY());
+            //checks the monkey type, fires different projectiles depending on the monkey type
             if(type == "DartMonkey"){
                 shootDart();
             }else if (type == "Cannon"){
@@ -122,7 +168,11 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method that detects the closest camo balloon
+     */
     protected void findCamo(){
+        //add delay
         fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
@@ -145,7 +195,11 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method that detects the closest metal balloon
+     */
     protected void findMetal(){
+        //add delay
         fireRate++;
         double distanceToActor;
         double closestTargetDistance = 0;
@@ -168,6 +222,9 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method to shoot the dart projectile towards the closest balloon
+     */
     protected void shootDart(){
         if(fireRate > attackSpeed){
             Dart d = new Dart();
@@ -177,6 +234,9 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method to shoot the laser projectile towards the closest balloon
+     */
     protected void shootLaser(){
         if(fireRate > attackSpeed){
             Laser l = new Laser();
@@ -186,6 +246,11 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method to shoot the bomb projectile towards the closest metal balloon or balloon
+     * Bomb tower will prioritize metal balloons, thus an arraylist is used to get the size of
+     * the metal balloon class. If it is 0, it will attack normal balloons
+     */
     protected void shootBomb(){
         ArrayList<MetalBalloon> mBalloon = (ArrayList<MetalBalloon>)getWorld().getObjects(MetalBalloon.class);
 
@@ -201,6 +266,11 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method to shoot the sniper dart projectile towards the closest camo balloon or balloon
+     * Sniper tower will prioritize camo balloons, thus an arraylist is used to get the size of
+     * the camo balloon class. If it is 0, it will attack normal balloons
+     */
     protected void shootSniper(){
         ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
 
@@ -216,14 +286,23 @@ public abstract class Monkeys extends Actor
         }
     }
 
+    /**
+     * Method used to change the user's money count if a monkey has been purchases/placed
+     */
     public void buyTower(int cost){
         ((GameWorld) getWorld()).setMoney(cost);
     }
 
+    /**
+     * Getter method that returns the monkeys's range
+     */
     public int getRange(){
         return balloonRange;
     }
 
+    /**
+     * Setter method that sets's the "stats" boolean variable
+     */
     public void setTowerStats(boolean b){
         stats = b;
     }

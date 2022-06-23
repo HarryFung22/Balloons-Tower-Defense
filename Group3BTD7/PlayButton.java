@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class PlayButton here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Nick S
+ * @version June 23 2022
  */
 public class PlayButton extends Button
 {

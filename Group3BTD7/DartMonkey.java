@@ -1,16 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class DartMonkey here.
+ * This is a dart monkey. Nothing special about it, just attacks normal balloons and does 
+ * low-moderate damage and has slow and short fire rate/range
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harry F
+ * @version June 23 2022
  */
 public class DartMonkey extends Monkeys
 {
     MouseInfo mouse = Greenfoot.getMouseInfo();
     boolean isBought = false;
     GreenfootImage image;
+    
+    /** 
+     * Constructor for the dart monkey
+     */
     public DartMonkey(){
         image = new GreenfootImage("Dart Monkey.png");
         image.scale(image.getWidth()/8, image.getHeight()/8);
@@ -25,6 +30,10 @@ public class DartMonkey extends Monkeys
         sellCost = cost / 2;
         
     }
+    
+    /**
+     * Act method to interact with the world
+     */
     public void act(){
         findBalloon("DartMonkey");
         super.act();

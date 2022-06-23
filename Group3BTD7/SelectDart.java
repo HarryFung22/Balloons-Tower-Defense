@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SelectDart here.
+ * Select icon for the dart monkey
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harry F
+ * @version June 23 2022
  */
 public class SelectDart extends SelectMonkey
 {
     GreenfootImage image;
+    /**
+     * Constructor for the selectDart icon
+     */
     public SelectDart(){
         image = new GreenfootImage("Dart Monkey.png");
         image.scale(image.getWidth()/9, image.getHeight()/9);
