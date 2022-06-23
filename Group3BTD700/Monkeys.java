@@ -43,11 +43,19 @@ public abstract class Monkeys extends Actor
     //Variable used to set the user's money
     int balance;
 
-    //projectile sounds
-    GreenfootSound Dart = new GreenfootSound("Dart Sound.wav");
-    GreenfootSound Bomb = new GreenfootSound("Bomb Sound.wav");
-    GreenfootSound Sniper = new GreenfootSound("Sniper Sound.wav");
-    GreenfootSound Laser = new GreenfootSound("Laser Sound.wav");
+    //projectile sounds and variables
+    GreenfootSound dart = new GreenfootSound("Dart Sound.wav");
+    GreenfootSound bomb = new GreenfootSound("Bomb Sound.wav");
+    GreenfootSound sniper = new GreenfootSound("Sniper Sound.wav");
+    GreenfootSound laser = new GreenfootSound("Laser Sound.wav");
+    
+    GreenfootSound[] dartSound = new GreenfootSound[10];
+    GreenfootSound[] bombSound = new GreenfootSound[10];
+    GreenfootSound[] sniperSound = new GreenfootSound[10];
+    GreenfootSound[] laserSound = new GreenfootSound[10];
+
+    int audIndex = 0;
+    boolean audioSetup = false;
 
     //upgrade and sell sounds
     GreenfootSound upgrade = new GreenfootSound("Upgrade.wav");
@@ -59,6 +67,20 @@ public abstract class Monkeys extends Actor
      */
     public void act()
     {
+        //Set all the audio arrays
+        if(audioSetup == false){
+            for(int i = 0; i < 10; i++){
+                dartSound[i] = new GreenfootSound("Dart Sound.wav");
+                bombSound[i] = new GreenfootSound("Bomb Sound.wav");
+                sniperSound[i] = new GreenfootSound("Sniper Sound.wav");
+                laserSound[i] = new GreenfootSound("Laser Sound.wav");
+                dartSound[i].setVolume(80);
+                bombSound[i].setVolume(75);
+                sniperSound[i].setVolume(85);
+                laserSound[i].setVolume(85);
+            }
+            audioSetup = true;
+        }
         if(!Greenfoot.mouseClicked(this)){
             //center the monkey into the closest 50x50 grid
             //updates the user's money
@@ -252,8 +274,11 @@ public abstract class Monkeys extends Actor
             getWorld().addObject(d, getX(), getY());
             d.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             fireRate = 0;
-            Dart.setVolume(85);
-            Dart.play();
+            dartSound[audIndex].play();
+            audIndex++;
+            if(audIndex > dartSound.length - 1){
+                audIndex = 0;
+            }
         }
     }
 
@@ -266,8 +291,11 @@ public abstract class Monkeys extends Actor
             getWorld().addObject(l, getX(), getY());
             l.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             fireRate = 0;
-            Laser.setVolume(90);
-            Laser.play();
+            laserSound[audIndex].play();
+            audIndex++;
+            if(audIndex > laserSound.length - 1){
+                audIndex = 0;
+            }
         }
     }
 
@@ -288,8 +316,11 @@ public abstract class Monkeys extends Actor
                 b.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             }
             fireRate = 0;
-            Bomb.setVolume(80);
-            Bomb.play();
+            bombSound[audIndex].play();
+            audIndex++;
+            if(audIndex > bombSound.length - 1){
+                audIndex = 0;
+            }
         }
     }
 
@@ -310,8 +341,11 @@ public abstract class Monkeys extends Actor
                 s.turnTowards(targetBalloon.getX(), targetBalloon.getY());
             }
             fireRate = 0;
-            Sniper.setVolume(90);
-            Sniper.play();
+            sniperSound[audIndex].play();
+            audIndex++;
+            if(audIndex > sniperSound.length - 1){
+                audIndex = 0;
+            }
         }
     }
 
