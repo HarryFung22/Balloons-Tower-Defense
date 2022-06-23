@@ -1,16 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class SniperMonkey here.
+ * This is a sniper monkey. Its purpose is to attack camo balloons or normal balloons 
+ * (will prioritize the camo balloons).
+ * Only tower that is able to hit camo balloons
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * <p> Art: https://bloons.fandom.com/wiki/Faster_Firing_(Sniper_Monkey) <p/>
+ * @author Harry F
+ * @version June 23 2022
  */
 public class SniperMonkey extends Monkeys
 {
     MouseInfo mouse = Greenfoot.getMouseInfo();
     boolean isBought = false;
     GreenfootImage image;
+    /**
+     * Constructor for the sniper monkey
+     */
     public SniperMonkey(){
         image = new GreenfootImage("Sniper Monkey Box Hitbox.png");
         image.scale(image.getWidth()/6, image.getHeight()/6);
@@ -26,6 +32,9 @@ public class SniperMonkey extends Monkeys
         sellCost = cost / 2;
     }
     
+    /**
+     * Act method to check which balloon type to attack
+     */
     public void act(){
         ArrayList<CamoBalloon> cBalloon = (ArrayList<CamoBalloon>)getWorld().getObjects(CamoBalloon.class);
         if(cBalloon.size() > 0){

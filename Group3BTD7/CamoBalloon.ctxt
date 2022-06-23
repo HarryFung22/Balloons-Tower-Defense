@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=CamoBalloon
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ CamoBalloon\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Camo\ balloon\ enemy;\ Only\ sniper\ monkeys\ can\ attack\ and\ destroy\ them\r\n\ Hidden\ to\ every\ other\ tower\r\n\ <p>Art\:\ https\://www.pngwing.com/en/free-png-imzrn\ <p/>\r\n\ \r\n\ @author\ Aiden\ S\ \r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=CamoBalloon()
+comment1.text=\r\n\ Constructor\ for\ the\ camo\ balloon\ at\ it's\ properties\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ which\ allows\ the\ balloons\ to\ interact\ with\ the\ world\ and\ acheive\ its\ goal\ \r\n\ (reaching\ the\ end)\r\n
 numComments=3

@@ -1,14 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SniperDart here.
+ * Sniper dart projectile, shot by the sniper tower
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * <p> Art: https://favpng.com/png_view/pink-wave-point-bloons-td-5-bloons-td-3-tower-defense-darts-minecraft-png/iZ3GeTCN <p/>
+ * @author Nick S
+ * @version June 23 2022
  */
 public class SniperDart extends ParentDart
 {
     GreenfootImage image;
+    
+    /**
+     * Constructor for the sniper dart
+     */
     public SniperDart(){
         image = new GreenfootImage("Dart.png");
         image.scale(image.getWidth()/20, image.getHeight()/20);

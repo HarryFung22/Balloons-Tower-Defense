@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SelectCannon here.
+ * Select icon for the cannon
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harry F
+ * @version June 23 2022
  */
 public class SelectCannon extends SelectMonkey
 {
     GreenfootImage image;
+    /**
+     * Constructor for the selectCannon icon
+     */
     public SelectCannon(){
         image = new GreenfootImage("Bomb Tower.png");
         image.scale(image.getWidth()/9, image.getHeight()/9);

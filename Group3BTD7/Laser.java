@@ -1,14 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Laser here.
+ * Laser projectile, shot by the super monkey
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * <p> Art: https://www.pngitem.com/so/red-laser/ <p/>
+ * @author Nick S
+ * @version June 23 2022
  */
 public class Laser extends ParentDart
 {
     GreenfootImage image;
+    
+    /**
+     * Constructor for the laser
+     */
     public Laser(){
         image = new GreenfootImage("Laser.png");
         image.scale(image.getWidth()/2, image.getHeight()/2);

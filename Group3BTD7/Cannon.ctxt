@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Cannon
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Cannon\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ a\ bomb\ tower/cannon.\ Its\ purpose\ is\ to\ attack\ metal\ balloons\ or\ normal\ balloons\ \r\n\ (will\ prioritize\ the\ metal\ balloons).\r\n\ Only\ tower\ that\ is\ able\ to\ hit\ metal\ balloons\r\n\ \r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=Cannon()
+comment1.text=\r\n\ Constructor\ for\ the\ cannon\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ to\ check\ which\ balloon\ type\ to\ attack\r\n
 numComments=3

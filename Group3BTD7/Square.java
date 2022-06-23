@@ -20,6 +20,9 @@ public class Square extends Actor
         // Add your action code here.
     }
     
+    /**
+     * Method to draw the square
+     */
     public void drawSquare(){
         square = new GreenfootImage(50,50);
         Color beige = new Color(224, 202, 180);

@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Button here.
+ * Super class for all buttons, serves no purpose beside keeping all buttons clumped up together
+ * for easier access
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Nick S
+ * @version June 23 2022
  */
 public abstract class Button extends Actor
 {

@@ -1,14 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bomb here.
+ * Bomb projectile, shot by the cannon
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * <p> Art: https://favpng.com/png_view/alliance-vector-bloons-td-5-bloons-td-battles-ninja-kiwi-tower-defense-png/1HQuTH9f <p/>
+ * @author Nick S
+ * @version June 23 2022
  */
 public class Bomb extends ParentDart
 {
     GreenfootImage image;
+    /**
+     * Contructor for the bomb
+     */
     public Bomb(){
         image = new GreenfootImage("Bomb.png");
         image.scale(image.getWidth()/60, image.getHeight()/60);

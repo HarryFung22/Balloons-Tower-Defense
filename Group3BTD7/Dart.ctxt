@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=Dart
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Dart\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Dart\ projectile,\ shot\ by\ the\ dart\ monkey\r\n\ \r\n\ <p>\ Art\:\ https\://favpng.com/png_view/pink-wave-point-bloons-td-5-bloons-td-3-tower-defense-darts-minecraft-png/iZ3GeTCN\ <p/>\r\n\ @author\ Nick\ S\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=Dart()
+comment1.text=\r\n\ Constructor\ for\ the\ dart\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

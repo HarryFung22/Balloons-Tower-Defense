@@ -1,27 +1,39 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class SelectMonkey here.
+ * Superclass for all selectable icons on the UI
+ * SelectMonkey are towers that the user can click, and then place on an open grid that isn't 
+ * occupied. An icon will be placed on the selected tower type to indicate if the user can 
+ * place the tower. To get rid of the tower you selected (if you don't want to place that tower),
+ * just click the selected tower icon again
  * 
- * @author Harry F 
- * @version (a version number or a date)
+ * @author Harry F, Aiden S 
+ * @version June 23 2022
  */
 public abstract class SelectMonkey extends Actor
 {
     int pickX, pickY;
     boolean pressed = false;
+    
+    /**
+     * Method to place the selected tower
+     */
     public void select(String tower){
 
+        //arraylist of all "selected" objects in the world
         ArrayList<Selected> s = (ArrayList<Selected>)getWorld().getObjects(Selected.class);
         
         int balance = ((GameWorld)getWorld()).getMoney();
         Selected select = new Selected();
         
         Monkeys monkey = (Monkeys)getOneIntersectingObject(Monkeys.class);
+        
+        //if the size of the "selected" objects are 0, sets the pressed variable as false
         if(s.size() <= 0){
             pressed = false;
         }
         
+        //checks if the monkey icon is clicked
         if(Greenfoot.mouseClicked(this)){
             pressed = true;
             MouseInfo m = Greenfoot.getMouseInfo();
@@ -30,10 +42,16 @@ public abstract class SelectMonkey extends Actor
             getWorld().addObject(select, pickX, pickY);
         }
         
+        //checks if the user doesn't want to place the tower
         if(Greenfoot.mouseClicked(this) && pressed == true && s.size() > 0){
              getWorld().removeObjects(getWorld().getObjects(Selected.class));
         }
 
+        //checks if the user is placing the monkey on an empty grid (and also if it isn't on
+        //another actor)
+        //Also checks if they have enough money to afford the tower
+        //Else statement is used to set the pressed variable as false to that the tower won't
+        //autoplace once the user gets enough money
         if(pressed == true && Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() == null){
             MouseInfo m = Greenfoot.getMouseInfo();
             if(tower == "Cannon" && balance - 400 >= 0){

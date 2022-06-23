@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Balloon
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Balloon\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Regular\ balloon,\ any\ tower\ can\ detect\ and\ shoot\ them\r\n\ Nothing\ special\ about\ this\ class.\r\n\ <p>Art\:\ https\://www.pngwing.com/en/free-png-zcmjx\ <p/>\r\n\ \r\n\ @author\ Aiden\ S\ \r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=Balloon()
+comment1.text=\r\n\ Constructor\ for\ the\ balloon\ at\ it's\ properties\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ which\ allows\ the\ balloons\ to\ interact\ with\ the\ world\ and\ acheive\ its\ goal\ \r\n\ (reaching\ the\ end)\r\n
 numComments=3

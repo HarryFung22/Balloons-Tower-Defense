@@ -1,14 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Balloon here.
+ * Regular balloon, any tower can detect and shoot them
+ * Nothing special about this class.
+ * <p>Art: https://www.pngwing.com/en/free-png-zcmjx <p/>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Aiden S 
+ * @version June 23 2022
  */
 public class Balloon extends Balloons
 {
+    //variale used to scale the image
     GreenfootImage image;
+    /**
+     * Constructor for the balloon at it's properties
+     */
     public Balloon(){
         health = 2;
         speed = 3;
@@ -16,6 +22,11 @@ public class Balloon extends Balloons
         image.scale(50,50);
         setImage(image);
     }
+    
+    /**
+     * Act method which allows the balloons to interact with the world and acheive its goal 
+     * (reaching the end)
+     */
     public void act()
     {
         onPath();

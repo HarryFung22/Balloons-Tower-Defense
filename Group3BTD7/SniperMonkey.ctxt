@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=SniperMonkey
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SniperMonkey\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ a\ sniper\ monkey.\ Its\ purpose\ is\ to\ attack\ camo\ balloons\ or\ normal\ balloons\ \r\n\ (will\ prioritize\ the\ camo\ balloons).\r\n\ Only\ tower\ that\ is\ able\ to\ hit\ camo\ balloons\r\n\ \r\n\ <p>\ Art\:\ https\://bloons.fandom.com/wiki/Faster_Firing_(Sniper_Monkey)\ <p/>\r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=SniperMonkey()
+comment1.text=\r\n\ Constructor\ for\ the\ sniper\ monkey\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ to\ check\ which\ balloon\ type\ to\ attack\r\n
 numComments=3

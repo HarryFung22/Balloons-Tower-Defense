@@ -1,14 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SelectSuperMonkey here.
+ * Select icon for the super monkey
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harry F
+ * @version June 23 2022
  */
 public class SelectSuper extends SelectMonkey
 {
     GreenfootImage image;
+    
+    /**
+     * Constructor for the selectSuper icon
+     */
     public SelectSuper(){
         image = new GreenfootImage("Super Monkey.png");
         image.scale(image.getWidth()-10, image.getHeight()-10);

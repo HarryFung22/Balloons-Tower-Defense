@@ -1,12 +1,15 @@
 #BlueJ class context
 comment0.target=Pathing
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Pathing\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ used\ to\ create\ a\ path\ for\ the\ balloons\ \r\n\ 50x50\ are\ the\ dimensions\ of\ a\ singular\ grid\r\n\ The\ path\ is\ created\ by\ implementing\ multiple\ instances\ of\ this\ class\ to\ create\ an\ overall\ map\r\n\ \r\n\ @author\ Aiden\ S\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=rotation
 comment1.target=Pathing(int)
+comment1.text=\r\n\ Method\ to\ create\ a\ path\ that\ rotates\ the\ balloons\ depensing\ on\ the\ specified\ int\r\n\ Overloads\ the\ other\ constructor\ if\ an\ int\ is\ specified\r\n
 comment2.params=straight
 comment2.target=Pathing(boolean)
+comment2.text=\r\n\ Method\ to\ create\ a\ path\ that\ moves\ the\ balloons\ in\ a\ straight\ path\r\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
 comment4.target=void\ drawPath()
+comment4.text=\r\n\ Method\ to\ draw\ the\ path\r\n
 numComments=5

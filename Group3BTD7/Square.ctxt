@@ -7,4 +7,5 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ drawSquare()
+comment3.text=\r\n\ Method\ to\ draw\ the\ square\r\n
 numComments=4

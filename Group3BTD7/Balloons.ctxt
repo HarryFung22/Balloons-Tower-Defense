@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Balloons
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Balloons\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ the\ superclass\ for\ all\ balloons\r\n\ Objective\ is\ to\ reach\ the\ end\ of\ the\ path\ and\ turn\ the\ user's\ health\ to\ 0\r\n\ Monkeys\ will\ be\ used\ in\ order\ to\ attack\ and\ destroy\ these\ balloons\r\n\ \r\n\ @author\ Aiden\ S\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=void\ attacked()
+comment1.text=\r\n\ Method\ used\ to\ check\ if\ a\ balloon\ is\ "hit"\ by\ its\ respective\ projectile,\ deducts\ its\r\n\ health\ if\ hit\ by\ the\ projectile\r\n\ Results\ vary\ for\ each\ type\ of\ projectile\r\n
 comment2.params=
 comment2.target=void\ onPath()
+comment2.text=\r\n\ Method\ to\ make\ balloons\ react\ differently\ (rotate)\ depending\ on\ the\ path's\ number\ and\r\n\ properties\r\n\ Makes\ the\ balloon\ stay\ on\ the\ map's\ path\r\n
 comment3.params=
 comment3.target=void\ removeMe()
+comment3.text=\r\n\ Method\ to\ "despawn"\ balloons\ at\ the\ edge\ of\ the\ map\r\n
 numComments=4

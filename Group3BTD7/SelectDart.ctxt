@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=SelectDart
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SelectDart\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Select\ icon\ for\ the\ dart\ monkey\r\n\ \r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=SelectDart()
+comment1.text=\r\n\ Constructor\ for\ the\ selectDart\ icon\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

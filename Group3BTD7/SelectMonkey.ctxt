@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=SelectMonkey
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SelectMonkey\ here.\r\n\ \r\n\ @author\ Harry\ F\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Superclass\ for\ all\ selectable\ icons\ on\ the\ UI\r\n\ SelectMonkey\ are\ towers\ that\ the\ user\ can\ click,\ and\ then\ place\ on\ an\ open\ grid\ that\ isn't\ \r\n\ occupied.\ An\ icon\ will\ be\ placed\ on\ the\ selected\ tower\ type\ to\ indicate\ if\ the\ user\ can\ \r\n\ place\ the\ tower.\ To\ get\ rid\ of\ the\ tower\ you\ selected\ (if\ you\ don't\ want\ to\ place\ that\ tower),\r\n\ just\ click\ the\ selected\ tower\ icon\ again\r\n\ \r\n\ @author\ Harry\ F,\ Aiden\ S\ \r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=tower
 comment1.target=void\ select(java.lang.String)
+comment1.text=\r\n\ Method\ to\ place\ the\ selected\ tower\r\n
 numComments=2
