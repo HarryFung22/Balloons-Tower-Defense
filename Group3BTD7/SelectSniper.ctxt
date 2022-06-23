@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SelectSniper
-comment0.text=\r\n\ Select\ icon\ for\ the\ sniper\r\n\ \r\n\ \r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
+comment0.text=\r\n\ Select\ icon\ for\ the\ sniper\r\n\ \r\n\ <p>\ Art\:\ https\://bloons.fandom.com/wiki/Faster_Firing_(Sniper_Monkey)\ <p/>\r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=SelectSniper()
 comment1.text=\r\n\ Constructor\ for\ the\ selectSniper\ icon\r\n
