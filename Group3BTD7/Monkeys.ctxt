@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Monkeys
-comment0.text=\r\n\ This\ is\ the\ superclass\ for\ all\ monkeys\r\n\ Helps\ differentiate\ between\ tower\ types,\ by\ adjusting\ their\ individual\ properties\r\n\ \r\n\ @author\ Harry\ F,\ Aiden\ S\ \r\n\ @version\ June\ 23\ 2022\r\n
+comment0.text=\r\n\ This\ is\ the\ superclass\ for\ all\ monkeys\r\n\ Helps\ differentiate\ between\ tower\ types,\ by\ adjusting\ their\ individual\ properties\r\n\ \r\n\ <p>\ Dart\ Sound\ (Dart\ Sound\ effect\ HD)\:\ https\://www.youtube.com/watch?v\=pS7uyUNmQ08\r\n\ <p>\ Bomb\ Sound\ (Force\ push\ sound)\:\ https\://www.youtube.com/watch?v\=mvtBFHT8fWY\r\n\ <p>\ Sniper\ Sound\ (BOCW\ LW3\ Tundra\ Sound)\:\ https\://www.youtube.com/watch?v\=P2Yi0vfA2ZQ\r\n\ <p>\ Laser\ Sound\ (Laser\ gun\ sound\ effect)\:\ https\://www.youtube.com/shorts/FsLkXXOyeRI\r\n\ <p>\ Upgrade\ sound\ (Clash\ of\ Clans\ Elixir\ collect\ sound)\:\ https\://www.youtube.com/watch?v\=pjEfqcqnq_4\ \r\n\ <p>\ Sell\ sound\ (Tower\ Defense\ Simulator\ upgrade\ sound\ (roblox))\:\ https\://www.youtube.com/watch?v\=1zK9yj6QY8A\r\n\ \r\n\ @author\ Harry\ F,\ Aiden\ S\ \r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ This\ is\ the\ act\ method\ which\ will\ be\ used\ for\ interactions\ between\ the\ monkey\ and\ \r\n\ the\ world\r\n

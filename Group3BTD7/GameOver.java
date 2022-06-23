@@ -10,6 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends World
 {
+    GreenfootSound gameOver = new GreenfootSound("End.wav");
     GreenfootImage background = new GreenfootImage("GameOver.png");
     Label text = new Label("Press 'space' to play again\nPress 'r' to return to the main menu", 30);
     /**
@@ -18,6 +19,8 @@ public class GameOver extends World
     public GameOver()
     {    
         super(800, 600, 1); 
+        gameOver.setVolume(40);
+        gameOver.play();
         setBackground(background);
         //Adds the scoreboard
         addObject (new ScoreBoard(400,300),400,300);
@@ -28,10 +31,12 @@ public class GameOver extends World
     {
         //Send player to another game if the space key is pressed
         if (Greenfoot.isKeyDown("space")){
+            gameOver.stop();
             Greenfoot.setWorld(new GameWorld());
         } 
         //Otherwise, pressing the r key will return them back to the start
         else if(Greenfoot.isKeyDown("r")){
+            gameOver.stop();
             Greenfoot.setWorld(new StartWorld());
         }
     }
