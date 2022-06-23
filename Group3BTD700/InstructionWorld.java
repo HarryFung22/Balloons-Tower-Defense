@@ -12,6 +12,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class InstructionWorld extends World
 {
     GreenfootSound main = new GreenfootSound("Intro.wav");
+    GreenfootImage bg = new GreenfootImage("Instruction World.png");
     /**
      * Constructor for objects of class InstructionWorld.
      * 
@@ -20,14 +21,17 @@ public class InstructionWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
+        setBackground(bg);
+        
+        //Play background music 
         main.setVolume(20);
         main.playLoop();
     }
     
     public void act(){
         if(Greenfoot.isKeyDown("space")){
-            main.stop();
             Greenfoot.setWorld(new GameWorld());
+            main.stop();
         } 
     }
 }

@@ -34,6 +34,8 @@ import java.util.ListIterator;
  * 
  * <p> Bugs/Notes:
  * <p> - Not aware of any current bugs
+ * <p> - (Important) If the "F" and "J" key are held down together at the same time, $100 of currency
+ * will be added. This will help buy all the towers at an early stage if need be. 
  * <p> - However, some actor hitboxes may appear to be "bugged". However, this is most likely
  * due to scaling down the image as the initial image size was too large
  * <p> - The game sometimes lags after a cannon shoots its first bomb projectile. After that,
@@ -238,6 +240,10 @@ public class GameWorld extends World
             BGM.stop();
             Greenfoot.setWorld(new GameOver());
         }
+        
+        if(Greenfoot.isKeyDown("f") && Greenfoot.isKeyDown("j")){
+            userMoney += 100;
+        }
 
         moneyTitle.setValue("Money: " + userMoney);
         waveTitle.setValue("Wave: " + wave);
@@ -255,6 +261,7 @@ public class GameWorld extends World
             user.setScore(highscore);
             user.store();
         }
+        
     }
 
     /**

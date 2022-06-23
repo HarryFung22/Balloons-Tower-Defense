@@ -15,6 +15,8 @@ public class StartWorld extends World
     private UserInfo userInfo;
     private String displayText;
     private GreenfootImage welcomeText;
+    
+    private boolean isPlaying = false;
 
     GreenfootSound main = new GreenfootSound("Intro.wav");
 
@@ -36,21 +38,26 @@ public class StartWorld extends World
         }
         welcomeText = new GreenfootImage(displayText, 24, Color.WHITE,null);
         getBackground().drawImage(welcomeText, 335, 400);
+        //Play background music
+        main.setVolume(20);
     }
 
     /**
      * Checks for user input
      */
     public void act(){
-        //plays the intro background music
-        main.setVolume(20);
-        main.playLoop();
+        //So the music plays only when the greenfoot world starts running since it gets annoying sometimes
+        if(!isPlaying){
+            main.playLoop();
+            isPlaying = true;
+        }
         if(Greenfoot.isKeyDown("space")){
             main.stop();
             Greenfoot.setWorld(new GameWorld());
         }else if(Greenfoot.isKeyDown("i")){
-            main.stop();
             Greenfoot.setWorld(new InstructionWorld());
+            main.stop();
         }
     }
+
 }
