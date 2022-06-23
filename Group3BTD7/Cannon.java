@@ -18,8 +18,8 @@ public class Cannon extends Monkeys
      * Constructor for the cannon
      */
     public Cannon(){
-        image = new GreenfootImage("Bomb Tower.png");
-        image.scale(image.getWidth()/9, image.getHeight()/9);
+        image = new GreenfootImage("Bomb Tower Transparent Square.png");
+        image.scale(image.getWidth()/8 + 10, image.getHeight()/8 + 10);
         image.rotate(180);
         setImage(image);
         level = 0;
