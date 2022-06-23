@@ -14,7 +14,7 @@ public class Bomb extends ParentDart
      * Contructor for the bomb
      */
     public Bomb(){
-        image = new GreenfootImage("bomb.png");
+        image = new GreenfootImage("Bomb.png");
         image.scale(image.getWidth()/60, image.getHeight()/60);
         image.mirrorHorizontally();
         image.rotate(180);

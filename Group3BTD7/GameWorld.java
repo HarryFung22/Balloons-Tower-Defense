@@ -5,8 +5,45 @@ import java.util.ListIterator;
 /**
  * This is the world where the game is played. 
  * 
+ * <p> Credits: <p/>
+ * <p> All visual credits (for photos) and SFX (for sounds) are credited in their own respective class 
+ * <p> For example: Dart monkey png is credited in the dark monkey class API 
+ * <p> Code: <p/>
+ * All targetting methods found in the monkey class were derived from Jordan Cohen's find method
+ * from the bug simulation. The ScoreBoard class was also borrowed from Jordan Cohen and was
+ * used to display the score at the end of the game. The Label class was borrowed from Amjad Altadmri
+ * and was used to display the visual text on the screen (such as user health, money, etc).
+ * 
+ * <p> General Features: <p/>
+ * - Main objective of the game is to "defend" against the enemies (balloons) using 
+ * towers (monkeys) 
+ * <p> - 3 types of balloons: Normal, Camo, Metal
+ * <p> - 4 types of Towers: Dart, Sniper, Bomb, Super
+ * <p> - Each tower has specific properties (Ex. Sniper Monkeys are the only tower able to 
+ * see Camo Balloons)
+ * 
+ * <p> Additional Features: 
+ * <p> - An upgrade menu is availible, allowing for each tower to be upgraded
+ * <p> - Projectiles work like a "homing" projectile, which will follow the closest 
+ * targetable balloon. This ensures that projectiles will hit the balloon, despite projectile
+ * speeds or attack speeds. 
+ * <p> - A simple UI ensures that the user will have no trouble understanding the game
+ * <p> - An arraylist was used to randomize the spawn rate of balloons, and the order at 
+ * which they spawn. This is evident as you play through the game, seeing as to how one
+ * wave may end quickly, while another might take longer to finish.
+ * 
+ * <p> Bugs/Notes:
+ * <p> - Not aware of any current bugs
+ * <p> - However, some actor hitboxes may appear to be "bugged". However, this is most likely
+ * due to scaling down the image as the initial image size was too large
+ * <p> - The game sometimes lags after a cannon shoots its first bomb projectile. After that,
+ * there shouldn't be any lag. In the case of an exception for the bomb projectile, this is 
+ * due to the name of the png not matching the name of the png in the bomb class (This has
+ * occured before but we have check before submitting that the name of the png should be
+ * correct)
+ * 
  * @author Harry F, Aiden S, Nick S
- * @version June 21, 2022
+ * @version June 23, 2022
  */
 public class GameWorld extends World
 {
