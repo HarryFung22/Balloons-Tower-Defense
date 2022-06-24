@@ -50,6 +50,10 @@ import java.util.ListIterator;
  */
 public class GameWorld extends World
 {
+    //Background
+    private GreenfootImage bg = new GreenfootImage("Game Background.jpg");
+    
+    
     //Map layout - how are the balloons going to follow the path and what path they will take
     int map [][] = {
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -124,7 +128,9 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
-
+        //scale and set the background
+        bg.scale(bg.getWidth()/3, bg.getHeight()/3);
+        setBackground(bg);
         BGM.setVolume(30);
         BGM.playLoop();
         
@@ -210,6 +216,14 @@ public class GameWorld extends World
                 }
             }
         }
+        
+        //Grabs the current high score if possible
+        if (UserInfo.isStorageAvailable()) { 
+            user = UserInfo.getMyInfo();
+        }
+        if (user != null){ // check if logged in
+            highscore = user.getScore();
+        }
 
         //if user wants to start another wave even if there are still balloons left
         if(start && balloonsLeft > 0){
@@ -256,12 +270,10 @@ public class GameWorld extends World
         if (score > highscore){
             highscore = score;
         }
-        //Sets the score and pushes it into the server
         if (user != null){
             user.setScore(highscore);
             user.store();
         }
-        
     }
 
     /**

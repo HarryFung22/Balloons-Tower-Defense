@@ -5,6 +5,8 @@ import java.util.ArrayList;
  * (will prioritize the metal balloons).
  * Only tower that is able to hit metal balloons
  * 
+ * <p> Art: https://bloons.fandom.com/wiki/Bomb_Shooter_(pre-BTD6)
+ * 
  * @author Harry F
  * @version June 23 2022
  */

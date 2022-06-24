@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SuperMonkey
-comment0.text=\r\n\ This\ is\ a\ super\ monkey.\ Nothing\ super\ about\ it,\ just\ attacks\ normal\ balloons\ at\ a\ faster\ \r\n\ rate\ than\ the\ dart\ monkey\r\n\ \r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
+comment0.text=\r\n\ This\ is\ a\ super\ monkey.\ Nothing\ super\ about\ it,\ just\ attacks\ normal\ balloons\ at\ a\ faster\ \r\n\ rate\ than\ the\ dart\ monkey\r\n\ <p>\ Art\:\ https\://tcrf.net/File\:BTD5-MonkeyStormPro.png\r\n\ \r\n\ @author\ Harry\ F\r\n\ @version\ June\ 23\ 2022\r\n
 comment1.params=
 comment1.target=SuperMonkey()
 comment1.text=\r\n\ Constructor\ for\ the\ super\ monkey\r\n
