@@ -3,6 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * This is a dart monkey. Nothing special about it, just attacks normal balloons and does 
  * low-moderate damage and has slow and short fire rate/range
+ * <p> Art: https://www.pinpng.com/picture/Jxxxbb_1200-x-1200-3-dart-monkey-hd-png/
  * 
  * @author Harry F
  * @version June 23 2022
